@@ -16,7 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={space_mono.className}>{children}</body>
+      <body className={space_mono.className}>
+        <div className='flex min-h-screen flex-col items-center justify-between'>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
