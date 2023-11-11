@@ -3,7 +3,7 @@ import './globals.css';
 
 const space_mono = Space_Mono({
   display: 'swap',
-  style: ['normal', 'italic'],
+  // style: ['normal', 'italic'],
   subsets: ['latin'],
   weight: ['400', '700'],
 });
