@@ -3,16 +3,25 @@ import SearchButton from './SearchButton';
 
 export default function HeaderInput() {
   return (
-    <div className='flex justify-between my-4 bg-slate-800 rounded-lg p-2'>
-      <div className='flex w-full items-center'>
-        <Search size={28} className='mx-4 text-blue-500' />
+    <div className='flex justify-between py-2 my-4 rounded-xl bg-slate-800'>
+      <div className='flex items-center w-full'>
+        <label
+          htmlFor='headerInput'
+          className='mx-4 text-blue-500'>
+          <Search size={28} />
+        </label>
         <input
-          className='bg-transparent w-full'
+          className='w-full bg-transparent focus:outline-none placeholder:tracking-tight'
+          id='headerInput'
           name='headerInput'
+          type='text'
           placeholder='Search GitHub username...'
+          autoFocus
         />
       </div>
-      <SearchButton />
+      <div className='mx-2'>
+        <SearchButton />
+      </div>
     </div>
   );
 }

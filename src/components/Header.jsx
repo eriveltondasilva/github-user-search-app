@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <div className='flex justify-between'>
-        <div className='text-2xl font-bold'>devFinder</div>
+        <h1 className='text-2xl font-bold'>devFinder</h1>
         <div>
           <DarkModeButton />
         </div>

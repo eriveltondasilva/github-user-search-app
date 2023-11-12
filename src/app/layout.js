@@ -3,7 +3,6 @@ import './globals.css';
 
 const space_mono = Space_Mono({
   display: 'swap',
-  // style: ['normal', 'italic'],
   subsets: ['latin'],
   weight: ['400', '700'],
 });
@@ -17,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={space_mono.className}>
-        <div className='flex min-h-screen flex-col items-center justify-between'>
+        <div className='flex items-center justify-center min-h-screen bg-slate-950'>
           {children}
         </div>
       </body>
