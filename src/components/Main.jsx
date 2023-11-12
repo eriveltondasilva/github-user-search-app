@@ -1,3 +1,4 @@
+import InfoCard from './InfoCard';
 import SocialList from './SocialList';
 
 /* eslint-disable @next/next/no-img-element */
@@ -7,11 +8,11 @@ export default function Main() {
     ['Followers', 3938],
     ['Following', 9],
   ];
-  const socialItems = [
+  const socialList = [
     { icon: 'MapPin', title: 'San Francisco', link: '' },
     { icon: 'Twitter', title: 'Not Available', link: '' },
-    { icon: 'Link', title: 'github.blog', link: 'teste' },
-    { icon: 'Building2', title: '@agithub', link: 'teste' },
+    { icon: 'Link', title: 'github.blog', link: '#' },
+    { icon: 'Building2', title: '@agithub', link: '#' },
   ];
 
   return (
@@ -40,17 +41,10 @@ export default function Main() {
           This profile has no bio
         </p>
         <section className='my-5'>
-          <ul className='flex justify-between py-4 rounded-lg bg-slate-900 px-7'>
-            {cardItems.map((item, i) => (
-              <li key={item[0]}>
-                <h5>{item[0]}</h5>
-                <div className='text-xl font-semibold'>{item[1]}</div>
-              </li>
-            ))}
-          </ul>
+          <InfoCard items={cardItems} />
         </section>
         <section>
-          <SocialList items={socialItems} />
+          <SocialList items={socialList} />
         </section>
       </section>
     </main>
