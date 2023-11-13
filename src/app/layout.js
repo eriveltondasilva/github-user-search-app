@@ -1,3 +1,4 @@
+import { UserProvider } from '@/contexts/UserContext';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -16,9 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={space_mono.className}>
-        <div className='flex items-center justify-center min-h-screen bg-slate-950'>
-          {children}
-        </div>
+        <UserProvider>
+          <div className='flex items-center justify-center min-h-screen bg-slate-950'>
+            {children}
+          </div>
+        </UserProvider>
       </body>
     </html>
   );
