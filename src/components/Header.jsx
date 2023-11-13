@@ -1,7 +1,6 @@
 import DarkModeButton from '@/components/DarkModeButton';
-import HeaderInput from './HeaderInput';
 
-export default function Header() {
+export default function Header({ children }) {
   return (
     <header>
       <div className='flex justify-between'>
@@ -10,7 +9,7 @@ export default function Header() {
           <DarkModeButton />
         </div>
       </div>
-      <HeaderInput />
+      {children}
     </header>
   );
 }

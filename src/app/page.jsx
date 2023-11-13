@@ -1,15 +1,16 @@
 import Header from '@/components/Header';
+import HeaderInput from '@/components/HeaderInput';
 import Main from '@/components/Main';
-import getData from '@/utils/getData';
 
 export default async function Home() {
   const login = 'eriveltondasilva';
-  const user = await getData(login);
 
   return (
     <div className='w-[36rem]'>
-      <div>{user.name}</div>
-      <Header />
+      <div></div>
+      <Header>
+        <HeaderInput />
+      </Header>
       <Main />
     </div>
   );
