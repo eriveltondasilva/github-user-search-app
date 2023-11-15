@@ -1,4 +1,6 @@
-import Card from './Card'
+import Card from './Card';
+
+// =============================
 
 export default function CardIndex() {
   const cardInfo = [
@@ -15,27 +17,27 @@ export default function CardIndex() {
   ];
 
   return (
-    <Card.root>
-      <Card.image
+    <Card>
+      <Card.Image
         src='https://xsgames.co/randomusers/avatar.php?g=female'
         alt='test'
       />
 
-      <Card.content>
-        <Card.header>
-          <Card.title>The Octocat</Card.title>
+      <Card.Content>
+        <Card.Header>
+          <Card.Title>The Octocat</Card.Title>
 
-          <Card.subtitle>Joined 25 Jan 2011</Card.subtitle>
+          <Card.Subtitle>Joined 25 Jan 2011</Card.Subtitle>
 
-          <Card.link href='#'>@octocat</Card.link>
-        </Card.header>
+          <Card.Link href='#'>@octocat</Card.Link>
+        </Card.Header>
 
-        <Card.bio>This profile has no bio</Card.bio>
+        <Card.Bio>This profile has no bio</Card.Bio>
 
-        <Card.info items={cardInfo} />
+        <Card.Info />
 
-        <Card.list items={cardList} />
-      </Card.content>
-    </Card.root>
+        <Card.List />
+      </Card.Content>
+    </Card>
   );
 }
