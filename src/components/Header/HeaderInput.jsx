@@ -56,7 +56,6 @@ export default function HeaderInput() {
           </button>
         </div>
       </div>
-      <div>{user?.name}</div>
     </form>
   );
 }

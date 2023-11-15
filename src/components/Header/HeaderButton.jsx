@@ -2,8 +2,9 @@
 import { Moon, Sun } from 'lucide-react';
 import { useState } from 'react';
 
-export default function DarkModeButton() {
+export default function HeaderButton() {
   const [darkMode, setDarkMode] = useState(true);
+
   return (
     <button
       className='flex gap-2 font-medium tracking-wide'
