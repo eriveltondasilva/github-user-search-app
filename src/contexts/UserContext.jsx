@@ -6,8 +6,8 @@ const UserContext = createContext();
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  function userData(userData) {
-    setUser(userData);
+  function userData(param) {
+    setUser(param);
   }
 
   return (

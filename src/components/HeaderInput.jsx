@@ -1,28 +1,36 @@
 'use client';
-import { useState } from 'react';
-
-import getData from '@/utils/getData';
 import { Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+import { useUser } from '@/contexts/UserContext';
+import getData from '@/utils/getData';
 
 export default function HeaderInput() {
   const [search, setSearch] = useState('eriveltondasilva');
-  const [user, setUser] = useState('');
+  const { user, userData } = useUser();
+
+  async function getUser() {
+    const data = await getData(search);
+    userData(data);
+  }
 
   function handleSearch(e) {
     setSearch(e.target.value);
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     try {
-      const userData = await getData(search);
-      setUser(userData);
+      getUser();
     } catch (error) {
       console.error('Erro ao obter dados do usuário:', error);
     }
   }
 
-  console.log(user);
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <form onSubmit={handleSubmit} role='search'>
       <div className='flex justify-between py-2 my-4 rounded-xl bg-slate-800'>
@@ -48,8 +56,7 @@ export default function HeaderInput() {
           </button>
         </div>
       </div>
-      <div>{user.name}</div>
-      <div>{user.login}</div>
+      <div>{user?.name}</div>
     </form>
   );
 }
