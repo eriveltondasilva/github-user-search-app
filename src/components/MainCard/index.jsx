@@ -34,9 +34,9 @@ export default function CardIndex() {
 
         <Card.Bio>This profile has no bio</Card.Bio>
 
-        <Card.Info />
+        <Card.Info items={cardInfo}/>
 
-        <Card.List />
+        <Card.List items={cardList}/>
       </Card.Content>
     </Card>
   );

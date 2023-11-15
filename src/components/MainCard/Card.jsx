@@ -5,7 +5,6 @@ import CardInfo from './CardInfo';
 import CardList from './CardList';
 
 // =============================
-
 export default function Card({ children }) {
   return (
     <main className='grid grid-cols-[auto_1fr] gap-5 p-6 bg-slate-800 rounded-xl'>
@@ -68,7 +67,6 @@ function CardBio({ children }) {
 }
 
 // =============================
-
 Card.Image = CardImage;
 Card.Content = CardContent;
 Card.Header = CardHeader;
@@ -76,5 +74,5 @@ Card.Title = CardTitle;
 Card.Subtitle = CardSubtitle;
 Card.Link = CardLink;
 Card.Bio = CardBio;
-Card.List = CardList;
 Card.Info = CardInfo;
+Card.List = CardList;
