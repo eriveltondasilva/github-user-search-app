@@ -2,14 +2,14 @@ import Header from './Header';
 
 export default function HeaderIndex() {
   return (
-    <Header.root>
-      <Header.wrapper>
-        <Header.title title='devFinder' />
+    <Header>
+      <Header.Wrapper>
+        <Header.Title title='devFinder' />
 
-        <Header.button />
-      </Header.wrapper>
+        <Header.Button />
+      </Header.Wrapper>
 
-      <Header.input />
-    </Header.root>
+      <Header.Input />
+    </Header>
   );
 }

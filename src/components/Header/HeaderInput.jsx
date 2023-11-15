@@ -1,18 +1,9 @@
 'use client';
 import { Search } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
-import { useUser } from '@/contexts/UserContext';
-import getData from '@/utils/getData';
+import { useState } from 'react';
 
 export default function HeaderInput() {
   const [search, setSearch] = useState('eriveltondasilva');
-  const { user, userData } = useUser();
-
-  async function getUser() {
-    const data = await getData(search);
-    userData(data);
-  }
 
   function handleSearch(e) {
     setSearch(e.target.value);
@@ -20,16 +11,7 @@ export default function HeaderInput() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    try {
-      getUser();
-    } catch (error) {
-      console.error('Erro ao obter dados do usuário:', error);
-    }
   }
-
-  useEffect(() => {
-    getUser();
-  }, []);
 
   return (
     <form onSubmit={handleSubmit} role='search'>
