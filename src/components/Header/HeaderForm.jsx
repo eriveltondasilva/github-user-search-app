@@ -20,12 +20,6 @@ export default function HeaderForm() {
         <HeaderInput search={search} setSearch={setSearch} />
         <HeaderButton />
       </div>
-      <div>teste: {user.login ?? 'sem usuário'}</div>
-      <div>teste: {user.name ?? 'sem usuário'}</div>
-      <div>teste: {user.bio ?? 'sem usuário'}</div>
-      {/* <div>teste: {search ?? 'sem usuário'}</div> */}
-      {/* <div>teste: {data ? 'com usuário' : 'sem usuário'}</div> */}
-      {/* <div>teste: {data?.login ?? 'sem usuário'}</div> */}
     </form>
   );
 }

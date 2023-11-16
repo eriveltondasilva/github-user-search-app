@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'xsgames.co',
+        hostname: 'avatars.githubusercontent.com',
       },
     ],
   },

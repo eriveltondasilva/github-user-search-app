@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={space_mono.className}>
         <UserProvider>
-          <div className='flex items-center justify-center min-h-screen bg-slate-950'>
+          <div className='flex justify-center min-h-screen bg-slate-950'>
             {children}
           </div>
         </UserProvider>

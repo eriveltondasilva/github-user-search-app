@@ -9,7 +9,7 @@ export default function useSetUser(userSearched) {
   async function fetchData() {
     try {
       setIsLoading(true);
-      // const url = `https://api.github.com/users/${userSearched}`;
+      const url = `https://api.github.com/users/${userSearched}`;
       const data = await fetch(url).then((response) => response.json());
       setUser(data);
     } catch (error) {
@@ -23,5 +23,5 @@ export default function useSetUser(userSearched) {
     fetchData();
   }, []);
 
-  return { fetchData, user };
+  return { fetchData };
 }
