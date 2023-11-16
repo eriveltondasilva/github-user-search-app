@@ -41,13 +41,28 @@ function CardHeader({ children }) {
 }
 
 // -----------------------------
-function CardTitle({ children }) {
-  return <h2 className='text-xl font-semibold'>{children}</h2>;
+function CardTitle({ title }) {
+  return (
+    <h2 className='text-xl font-semibold truncate' title={title}>
+      {title}
+    </h2>
+  );
 }
 
 // -----------------------------
-function CardSubtitle({ children }) {
-  return <div className='text-sm font-medium text-right'>{children}</div>;
+function CardSubtitle({ subtitle }) {
+  const date = new Date(subtitle);
+  const optionDate = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
+
+  return (
+    <div className='text-sm font-medium text-right'>
+      Joined {date?.toLocaleDateString('en-GB', optionDate)}
+    </div>
+  );
 }
 
 // -----------------------------
@@ -55,7 +70,7 @@ function CardLink({ href, children }) {
   return (
     <h3>
       <Link href={href} className='font-medium text-blue-700'>
-        {children}
+        @{children}
       </Link>
     </h3>
   );
@@ -63,7 +78,11 @@ function CardLink({ href, children }) {
 
 // -----------------------------
 function CardBio({ children }) {
-  return <p className='mt-5 font-medium text-slate-300'>{children}</p>;
+  return (
+    <p className='mt-5 font-medium text-slate-300'>
+      {children ?? 'This profile has no bio'}
+    </p>
+  );
 }
 
 // =============================
