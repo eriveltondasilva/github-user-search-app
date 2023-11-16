@@ -6,10 +6,9 @@ export default function HeaderIndex() {
       <Header.Wrapper>
         <Header.Title title='devFinder' />
 
-        <Header.Button />
+        <Header.ToggleDarkMode />
       </Header.Wrapper>
-
-      <Header.Input />
+      <Header.Form />
     </Header>
   );
 }

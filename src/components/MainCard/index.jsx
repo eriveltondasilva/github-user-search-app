@@ -1,7 +1,6 @@
 import Card from './Card';
 
 // =============================
-
 export default function CardIndex() {
   const cardInfo = [
     ['repos', 8],
@@ -34,9 +33,9 @@ export default function CardIndex() {
 
         <Card.Bio>This profile has no bio</Card.Bio>
 
-        <Card.Info items={cardInfo}/>
+        <Card.Info items={cardInfo} />
 
-        <Card.List items={cardList}/>
+        <Card.List items={cardList} />
       </Card.Content>
     </Card>
   );

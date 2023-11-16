@@ -1,5 +1,5 @@
-import HeaderButton from './HeaderButton';
-import HeaderInput from './HeaderInput';
+import HeaderForm from './HeaderForm';
+import HeaderToggleDarkMode from './HeaderToggleDarkMode';
 
 // =============================
 export default function Header({ children }) {
@@ -19,5 +19,5 @@ function HeaderTitle({ title }) {
 // =============================
 Header.Wrapper = HeaderWrapper;
 Header.Title = HeaderTitle;
-Header.Button = HeaderButton;
-Header.Input = HeaderInput;
+Header.ToggleDarkMode = HeaderToggleDarkMode;
+Header.Form = HeaderForm;
