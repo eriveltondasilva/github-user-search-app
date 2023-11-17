@@ -1,12 +1,16 @@
 'use client';
-import useSetUser from '@/hooks/useSetUser';
 import { Search } from 'lucide-react';
 import { useState } from 'react';
+
+import { useUserContext } from '@/contexts/UserContext';
+import useSetUser from '@/hooks/useSetUser';
 import PrimaryButton from '../PrimaryButton';
 
-// -----------------------------
+// =============================
 export default function HeaderForm() {
   const [search, setSearch] = useState('eriveltondasilva');
+  const { user, isLoading } = useUserContext();
+
   const { fetchData } = useSetUser(search);
 
   function handleSearch(e) {
@@ -18,7 +22,7 @@ export default function HeaderForm() {
     <form onSubmit={handleSearch} role='search'>
       <div className='flex justify-between py-2 my-4 rounded-xl bg-slate-800'>
         <HeaderInput search={search} setSearch={setSearch} />
-        <HeaderButton />
+        <HeaderButton search={search} isLoading={isLoading} user={user} />
       </div>
     </form>
   );
@@ -49,10 +53,14 @@ function HeaderInput({ search, setSearch }) {
 }
 
 // -----------------------------
-function HeaderButton() {
+function HeaderButton({ search, user, isLoading }) {
   return (
     <div className='mx-2'>
-      <PrimaryButton type='submit'>Search</PrimaryButton>
+      <PrimaryButton
+        disabled={isLoading || search === user.login || !search}
+        type='submit'>
+        Search
+      </PrimaryButton>
     </div>
   );
 }

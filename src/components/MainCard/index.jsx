@@ -38,7 +38,7 @@ export default function CardIndex() {
 
   if (error) {
     return (
-      <Card className='flex bg-red-950/90'>
+      <Card className='flex bg-red-950'>
         <NotFoundUser error={error} />
       </Card>
     );
@@ -57,9 +57,11 @@ export default function CardIndex() {
       <Card.Image src={avatar_url} alt={name} />
       <Card.Content>
         <Card.Header>
-          <Card.Title title={name} />
+          <Card.HeaderWrapper>
+            <Card.Title title={name} />
 
-          <Card.Subtitle subtitle={created_at} />
+            <Card.Subtitle subtitle={created_at} />
+          </Card.HeaderWrapper>
 
           <Card.Link href={html_url}>{login}</Card.Link>
         </Card.Header>

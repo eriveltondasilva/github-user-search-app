@@ -1,9 +1,17 @@
 'use client';
-export default function PrimaryButton({ children, ...props }) {
+import { twJoin } from 'tailwind-merge';
+
+export default function PrimaryButton({ disabled, children, ...props }) {
+  const styledButton = twJoin(
+    'px-5 py-2 font-semibold tracking-wide transition duration-200 ease-in rounded-md ',
+    'bg-blue-500',
+    !disabled &&
+      'hover:bg-blue-600 active:outline active:outline-2 active:outline-offset-2',
+    disabled && 'cursor-not-allowed opacity-75'
+  );
+
   return (
-    <button
-      className='px-5 py-2 font-semibold tracking-wide transition duration-200 ease-in bg-blue-500 rounded-md hover:bg-blue-600 active:outline active:outline-2 active:outline-blue-400 active:outline-offset-2'
-      {...props}>
+    <button disabled={disabled} className={styledButton} {...props}>
       {children}
     </button>
   );
