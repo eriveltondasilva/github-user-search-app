@@ -11,12 +11,18 @@ export default function CardList({ items }) {
   return (
     <footer>
       <ul className={`grid grid-cols-2${!items ? ' hidden' : ''}`}>
-        {items?.map(([icon, title, link]) => (
-          <li className='flex items-center gap-3 mb-3' key={icon}>
-            <span>{iconMap[icon]}</span>
-            {link ? <a href={link}>{title}</a> : <div>{title}</div>}
-          </li>
-        ))}
+        {items &&
+          items.map(([icon, title], index) => (
+            <li
+              className={`flex items-center gap-3 mb-3 mr-3 truncate ${
+                title || 'opacity-50'
+              }`}
+              key={`${icon}-${index}`}
+              title={title}>
+              <span>{iconMap[icon]}</span>
+              {title || 'Not Available'}
+            </li>
+          ))}
       </ul>
     </footer>
   );

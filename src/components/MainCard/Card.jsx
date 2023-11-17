@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import CardInfo from './CardInfo';
 import CardList from './CardList';
 
 // =============================
-export default function Card({ children }) {
+export default function Card({ className, children }) {
   return (
-    <main className='grid grid-cols-[auto_1fr] gap-5 p-6 bg-slate-800 rounded-xl'>
+    <main className={`grid grid-cols-[auto_1fr] gap-5 p-6 bg-slate-800 rounded-xl ${className}`}>
       {children}
     </main>
   );
@@ -43,7 +42,7 @@ function CardHeader({ children }) {
 // -----------------------------
 function CardTitle({ title }) {
   return (
-    <h2 className='text-xl font-semibold truncate' title={title}>
+    <h2 className='text-xl font-semibold truncate' title={title && 'USER NOT FOUND'}>
       {title}
     </h2>
   );
@@ -69,9 +68,9 @@ function CardSubtitle({ subtitle }) {
 function CardLink({ href, children }) {
   return (
     <h3>
-      <Link href={href} className='font-medium text-blue-700'>
+      <a href={href || ''} className='font-medium text-blue-700'>
         @{children}
-      </Link>
+      </a>
     </h3>
   );
 }

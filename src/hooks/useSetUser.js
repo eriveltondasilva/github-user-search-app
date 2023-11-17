@@ -7,13 +7,23 @@ export default function useSetUser(userSearched) {
   const { setUser, setIsLoading, setError } = useUserContext();
 
   async function fetchData() {
+    const url = `https://api.github.com/users/${userSearched}`;
+    
+    setIsLoading(true);
+    setError(null);
+
     try {
-      setIsLoading(true);
-      const url = `https://api.github.com/users/${userSearched}`;
-      const data = await fetch(url).then((response) => response.json());
+      const response = await fetch(url);
+      const data = await response.json();
+
       setUser(data);
+
+      // não captura erro na api do github,
+      if (data.message) {
+        setError(data.message);
+      }
     } catch (error) {
-      setError(error.message);
+      setError(error);
     } finally {
       setIsLoading(false);
     }

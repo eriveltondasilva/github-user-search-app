@@ -1,31 +1,55 @@
 'use client';
 import { useUserContext } from '@/contexts/UserContext';
 import LoadingSkeleton from '../LoadingSkeleton';
+import NotFoundUser from '../NotFoundUser';
 import Card from './Card';
 
 // =============================
 export default function CardIndex() {
-  const { user } = useUserContext();
+  const { user, error, isLoading } = useUserContext();
   const {
-    name,
-    login,
-    html_url,
     avatar_url,
     bio,
     created_at,
-    public_repos,
     followers,
     following,
+    html_url,
+    login,
+    name,
+    public_repos,
+    blog,
+    company,
+    location,
+    twitter_username,
   } = user;
 
-  const items = [
+  const infoItems = [
     ['Repos', public_repos],
     ['Followers', followers],
     ['Following', following],
   ];
 
-  if (!user) {
-    return <LoadingSkeleton />;
+  const listItems = [
+    ['MapPin', location],
+    ['Twitter', twitter_username],
+    ['Link', blog],
+    ['Building2', company],
+  ];
+
+  if (error) {
+    return (
+      <Card className='flex bg-red-950/90'>
+        <NotFoundUser error={error} />
+      </Card>
+    );
+  }
+
+  if (isLoading || !user) {
+    return (
+      <Card>
+        <LoadingSkeleton />
+      </Card>
+    );
   }
 
   return (
@@ -42,9 +66,9 @@ export default function CardIndex() {
 
         <Card.Bio>{bio}</Card.Bio>
 
-        <Card.Info items={items} />
+        <Card.Info items={infoItems} />
 
-        <Card.List />
+        <Card.List items={listItems} />
       </Card.Content>
     </Card>
   );

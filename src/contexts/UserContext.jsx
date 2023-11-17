@@ -6,12 +6,12 @@ const UserContext = createContext();
 // =============================
 export default function UserProvider({ children }) {
   const [user, setUser] = useState('');
-  const [loading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   return (
     <UserContext.Provider
-      value={{ user, setUser, loading, setIsLoading, error, setError }}>
+      value={{ user, setUser, isLoading, setIsLoading, error, setError }}>
       {children}
     </UserContext.Provider>
   );

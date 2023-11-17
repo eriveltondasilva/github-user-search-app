@@ -27,7 +27,7 @@ export default function HeaderForm() {
 // -----------------------------
 function HeaderInput({ search, setSearch }) {
   function handleSearch(e) {
-    setSearch(e.target.value);
+    setSearch(e.target.value.trim());
   }
 
   return (
