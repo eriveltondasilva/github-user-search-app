@@ -10,7 +10,8 @@ export default function CardList({ items }) {
 
   return (
     <footer>
-      <ul className={`grid grid-cols-2${!items ? ' hidden' : ''}`}>
+      <ul
+        className={`grid sm:grid-cols-2 grid-cols-1${!items ? ' hidden' : ''}`}>
         {items &&
           items.map(([icon, title], index) => (
             <li

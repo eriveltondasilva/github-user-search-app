@@ -36,11 +36,11 @@ function HeaderInput({ search, setSearch }) {
 
   return (
     <div className='flex items-center w-full'>
-      <label htmlFor='headerInput' className='mx-4 text-blue-500'>
-        <Search size={28} />
+      <label htmlFor='headerInput' className='mx-2 sm:mx-4 text-blue-500'>
+        <Search />
       </label>
       <input
-        className='w-full bg-transparent focus:outline-none placeholder:tracking-tight'
+        className='text-sm sm:text-lg w-full bg-transparent focus:outline-none placeholder:tracking-tight'
         id='headerInput'
         type='text'
         value={search}

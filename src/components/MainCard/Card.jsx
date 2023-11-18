@@ -7,7 +7,7 @@ import CardList from './CardList';
 export default function Card({ className, children }) {
   return (
     <main
-      className={`grid grid-cols-[auto_1fr] gap-5 p-6 bg-slate-800 rounded-xl ${className}`}>
+      className={`grid sm:grid-cols-[auto_1fr] gap-5 p-6 bg-slate-800 rounded-xl ${className}`}>
       {children}
     </main>
   );
@@ -35,19 +35,22 @@ function CardContent({ children }) {
 
 // -----------------------------
 function CardHeader({ children }) {
-  return <header>{children}</header>;
+  return (
+    <header className='flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between'>
+      {children}
+    </header>
+  );
 }
 
+// -----------------------------
 function CardHeaderWrapper({ children }) {
-  return (
-    <div className='flex items-baseline justify-between gap-2'>{children}</div>
-  );
+  return <div className='w-64 truncate'>{children}</div>;
 }
 
 // -----------------------------
 function CardTitle({ title }) {
   return (
-    <h2 className='text-xl font-semibold truncate' title={title}>
+    <h2 className='font-semibold truncate' title={title}>
       {title}
     </h2>
   );
@@ -73,7 +76,7 @@ function CardSubtitle({ subtitle }) {
 function CardLink({ href, children }) {
   return (
     <h3>
-      <a href={href ?? ''} className='font-medium text-blue-700'>
+      <a href={href ?? ''} className='font-medium text-blue-700 truncate'>
         @{children}
       </a>
     </h3>

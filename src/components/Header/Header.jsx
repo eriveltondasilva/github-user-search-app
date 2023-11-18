@@ -8,12 +8,12 @@ export default function Header({ children }) {
 
 // -----------------------------
 function HeaderWrapper({ children }) {
-  return <div className='flex justify-between'>{children}</div>;
+  return <div className='flex items-baseline justify-between'>{children}</div>;
 }
 
 // -----------------------------
 function HeaderTitle({ title }) {
-  return <h1 className='text-2xl font-bold'>{title}</h1>;
+  return <h1 className='text-lg font-bold sm:text-2xl'>{title}</h1>;
 }
 
 // =============================

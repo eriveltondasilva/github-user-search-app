@@ -60,10 +60,10 @@ export default function CardIndex() {
           <Card.HeaderWrapper>
             <Card.Title title={name} />
 
-            <Card.Subtitle subtitle={created_at} />
+            <Card.Link href={html_url}>{login}</Card.Link>
           </Card.HeaderWrapper>
 
-          <Card.Link href={html_url}>{login}</Card.Link>
+          <Card.Subtitle subtitle={created_at} />
         </Card.Header>
 
         <Card.Bio>{bio}</Card.Bio>
