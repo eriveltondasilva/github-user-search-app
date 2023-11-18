@@ -15,7 +15,7 @@ export default function CardList({ items }) {
         {items &&
           items.map(([icon, title], index) => (
             <li
-              className={`flex items-center gap-3 mb-3 mr-3 truncate ${
+              className={`flex items-center font-medium text-sm text-slate-500 dark:text-white gap-3 mb-3 mr-3 truncate ${
                 title || 'opacity-50'
               }`}
               key={`${icon}-${index}`}

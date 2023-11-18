@@ -17,10 +17,10 @@ export const metadata = {
 // =============================
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <html lang='en' className='dark'>
       <body className={space_mono.className}>
         <UserProvider>
-          <div className='flex justify-center min-h-screen bg-slate-950'>
+          <div className='flex justify-center min-h-screen text-slate-950 dark:text-white bg-slate-100 dark:bg-slate-950'>
             {children}
           </div>
         </UserProvider>

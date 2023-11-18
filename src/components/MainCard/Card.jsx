@@ -7,7 +7,7 @@ import CardList from './CardList';
 export default function Card({ className, children }) {
   return (
     <main
-      className={`grid sm:grid-cols-[auto_1fr] gap-5 p-6 bg-slate-800 rounded-xl ${className}`}>
+      className={`grid sm:grid-cols-[auto_1fr] gap-5 p-6 bg-white shadow-lg dark:bg-slate-800 rounded-xl ${className}`}>
       {children}
     </main>
   );
@@ -50,7 +50,7 @@ function CardHeaderWrapper({ children }) {
 // -----------------------------
 function CardTitle({ title }) {
   return (
-    <h2 className='font-semibold truncate' title={title}>
+    <h2 className='text-lg sm:text-xl font-semibold truncate' title={title}>
       {title}
     </h2>
   );
@@ -66,7 +66,7 @@ function CardSubtitle({ subtitle }) {
   };
 
   return (
-    <div className='flex-none text-sm font-medium'>
+    <div className='flex-none text-sm font-medium text-slate-400'>
       Joined {date?.toLocaleDateString('en-GB', optionDate)}
     </div>
   );
@@ -76,7 +76,7 @@ function CardSubtitle({ subtitle }) {
 function CardLink({ href, children }) {
   return (
     <h3>
-      <a href={href ?? ''} className='font-medium text-blue-700 truncate'>
+      <a href={href ?? ''} className='font-medium text-blue-500 dark:text-blue-700 truncate'>
         @{children}
       </a>
     </h3>
@@ -86,7 +86,7 @@ function CardLink({ href, children }) {
 // -----------------------------
 function CardBio({ children }) {
   return (
-    <p className='mt-5 font-medium text-slate-300'>
+    <p className='mt-5 text-sm font-medium text-slate-400 dark:text-slate-300'>
       {children ?? 'This profile has no bio'}
     </p>
   );
