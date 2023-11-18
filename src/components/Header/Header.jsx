@@ -8,7 +8,7 @@ export default function Header({ children }) {
 
 // -----------------------------
 function HeaderWrapper({ children }) {
-  return <div className='flex items-baseline justify-between'>{children}</div>;
+  return <div className='flex items-baseline justify-between mb-8'>{children}</div>;
 }
 
 // -----------------------------
