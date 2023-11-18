@@ -20,7 +20,7 @@ export default function HeaderForm() {
 
   return (
     <form onSubmit={handleSearch} role='search'>
-      <div className='flex justify-between py-2 my-4 rounded-xl bg-slate-800'>
+      <div className='flex justify-between py-2 my-4 bg-white drop-shadow-md rounded-xl dark:bg-slate-800'>
         <HeaderInput search={search} setSearch={setSearch} />
         <HeaderButton search={search} isLoading={isLoading} user={user} />
       </div>
@@ -36,11 +36,11 @@ function HeaderInput({ search, setSearch }) {
 
   return (
     <div className='flex items-center w-full'>
-      <label htmlFor='headerInput' className='mx-4 text-blue-500'>
-        <Search size={28} />
+      <label htmlFor='headerInput' className='mx-2 text-blue-500 sm:mx-5'>
+        <Search />
       </label>
       <input
-        className='w-full bg-transparent focus:outline-none placeholder:tracking-tight'
+        className='w-full text-sm bg-transparent sm:text-base text-slate-600 dark:text-white focus:outline-none placeholder:tracking-tight'
         id='headerInput'
         type='text'
         value={search}

@@ -10,11 +10,12 @@ export default function CardList({ items }) {
 
   return (
     <footer>
-      <ul className={`grid grid-cols-2${!items ? ' hidden' : ''}`}>
+      <ul
+        className={`grid sm:grid-cols-2 grid-cols-1${!items ? ' hidden' : ''}`}>
         {items &&
           items.map(([icon, title], index) => (
             <li
-              className={`flex items-center gap-3 mb-3 mr-3 truncate ${
+              className={`flex items-center font-medium text-sm text-slate-500 dark:text-white gap-3 mb-3 mr-3 truncate ${
                 title || 'opacity-50'
               }`}
               key={`${icon}-${index}`}
