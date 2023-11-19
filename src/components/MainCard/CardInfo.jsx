@@ -2,7 +2,7 @@ import { twJoin } from 'tailwind-merge';
 
 export default function CardInfo({ items }) {
   const styleCardInfo = twJoin(
-    'flex justify-between py-4 my-5 rounded-lg bg-slate-100 dark:bg-slate-900 px-7',
+    'flex justify-between py-4 my-5 rounded-lg bg-slate-200 dark:bg-slate-900 px-7',
     !items && 'hidden'
   );
 
