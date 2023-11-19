@@ -12,7 +12,7 @@ export default function HeaderToggleDarkMode() {
 
   return (
     <button
-      className='flex gap-2 text-sm font-semibold tracking-wide text-slate-500 dark:text-white'
+      className='flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-500 dark:text-white'
       onClick={toggleDarkMode}>
       <span>{darkMode ? 'LIGHT' : 'DARK'}</span>
 
