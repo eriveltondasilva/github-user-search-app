@@ -9,21 +9,20 @@ export default function CardList({ items }) {
     Twitter: <Twitter size={16} />,
   };
 
-  const styledCardList = twJoin(
-    'grid sm:grid-cols-2 grid-cols-1',
-    !items && 'hidden',
-  );
-
   return (
     <footer>
       <ul
-        className={styledCardList}>
+        className={twJoin(
+          'grid sm:grid-cols-2 grid-cols-1',
+          !items && 'hidden'
+        )}>
         {items &&
           items.map(([icon, title], index) => (
             <li
-              className={`flex items-center font-medium text-sm text-slate-500 dark:text-white gap-3 mb-3 mr-3 truncate ${
+              className={twJoin(
+                'flex items-center font-medium text-sm text-slate-500 dark:text-white gap-3 mb-3 mr-3 truncate',
                 title || 'opacity-50'
-              }`}
+              )}
               key={`${icon}-${index}`}
               title={title}>
               <span>{iconMap[icon]}</span>

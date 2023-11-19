@@ -1,4 +1,5 @@
 import HeaderForm from './HeaderForm';
+import HeaderTitle from './HeaderTitle';
 import HeaderToggleDarkMode from './HeaderToggleDarkMode';
 
 // =============================
@@ -10,15 +11,6 @@ export default function Header({ children }) {
 function HeaderWrapper({ children }) {
   return (
     <div className='flex items-baseline justify-between mb-8'>{children}</div>
-  );
-}
-
-// -----------------------------
-function HeaderTitle({ title }) {
-  return (
-    <h1 className='text-2xl font-bold'>
-      <a href='/'>{title}</a>
-    </h1>
   );
 }
 
