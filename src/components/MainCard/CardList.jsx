@@ -1,4 +1,5 @@
 import { Building2, Link as LinkIcon, MapPin, Twitter } from 'lucide-react';
+import { twJoin } from 'tailwind-merge';
 
 export default function CardList({ items }) {
   const iconMap = {
@@ -8,10 +9,15 @@ export default function CardList({ items }) {
     Twitter: <Twitter size={16} />,
   };
 
+  const styledCardList = twJoin(
+    'grid sm:grid-cols-2 grid-cols-1',
+    !items && 'hidden',
+  );
+
   return (
     <footer>
       <ul
-        className={`grid sm:grid-cols-2 grid-cols-1${!items ? ' hidden' : ''}`}>
+        className={styledCardList}>
         {items &&
           items.map(([icon, title], index) => (
             <li

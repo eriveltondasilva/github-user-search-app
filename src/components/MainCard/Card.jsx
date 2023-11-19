@@ -1,16 +1,18 @@
 import Image from 'next/image';
+import { twJoin } from 'tailwind-merge';
 
 import CardInfo from './CardInfo';
 import CardList from './CardList';
 
 // =============================
-export default function Card({ className, children }) {
-  return (
-    <main
-      className={`grid sm:grid-cols-[auto_1fr] gap-5 p-6 bg-white shadow-lg dark:bg-slate-800 rounded-xl ${className}`}>
-      {children}
-    </main>
+export default function Card({ type, children }) {
+  const styledCard = twJoin(
+    'grid sm:grid-cols-[auto_1fr] gap-5 p-6 drop-shadow-md rounded-xl',
+    !type && 'bg-white dark:bg-slate-800',
+    type === 'danger' && 'bg-red-500 dark:bg-red-900'
   );
+
+  return <main className={styledCard}>{children}</main>;
 }
 
 // -----------------------------
@@ -50,7 +52,7 @@ function CardHeaderWrapper({ children }) {
 // -----------------------------
 function CardTitle({ title }) {
   return (
-    <h2 className='text-lg sm:text-xl font-semibold truncate' title={title}>
+    <h2 className='text-lg font-semibold truncate sm:text-xl' title={title}>
       {title}
     </h2>
   );
@@ -76,7 +78,9 @@ function CardSubtitle({ subtitle }) {
 function CardLink({ href, children }) {
   return (
     <h3>
-      <a href={href ?? ''} className='font-medium text-blue-500 dark:text-blue-700 truncate'>
+      <a
+        href={href ?? ''}
+        className='font-medium text-blue-500 truncate dark:text-blue-700'>
         @{children}
       </a>
     </h3>
