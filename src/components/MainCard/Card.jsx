@@ -53,23 +53,16 @@ function CardHeaderWrapper({ children }) {
 function CardTitle({ title }) {
   return (
     <h2 className='text-lg font-semibold truncate sm:text-xl' title={title}>
-      {title}
+      {title || 'Unnamed User'}
     </h2>
   );
 }
 
 // -----------------------------
-function CardSubtitle({ subtitle }) {
-  const date = new Date(subtitle);
-  const optionDate = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  };
-
+function CardSubtitle({ created_at }) {
   return (
     <div className='flex-none text-sm font-medium text-slate-400'>
-      Joined {date?.toLocaleDateString('en-GB', optionDate)}
+      Joined {created_at}
     </div>
   );
 }
@@ -79,7 +72,7 @@ function CardLink({ href, children }) {
   return (
     <h3>
       <a
-        href={href ?? ''}
+        href={href}
         className='font-medium text-blue-500 truncate dark:text-blue-700'>
         @{children}
       </a>

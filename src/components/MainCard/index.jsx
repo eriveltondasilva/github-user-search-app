@@ -36,6 +36,16 @@ export default function CardIndex() {
     ['Building2', company],
   ];
 
+  const optionDate = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
+
+  let date = new Date(created_at);
+  date = date?.toLocaleDateString('en-GB', optionDate);
+
+  // ------------------------------
   if (error) {
     return (
       <Card type='danger'>
@@ -63,7 +73,7 @@ export default function CardIndex() {
             <Card.Link href={html_url}>{login}</Card.Link>
           </Card.HeaderWrapper>
 
-          <Card.Subtitle subtitle={created_at} />
+          <Card.Subtitle created_at={date} />
         </Card.Header>
 
         <Card.Bio>{bio}</Card.Bio>
