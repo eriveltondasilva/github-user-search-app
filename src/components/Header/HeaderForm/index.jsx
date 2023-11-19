@@ -18,7 +18,7 @@ export default function HeaderFormIndex({ userLogin }) {
   // ------------------------------
   function handleSubmit(e) {
     e.preventDefault();
-    router.push(search);
+    router.push(`/user/${search}`);
     refetchData();
   }
   function handleSearch(e) {
