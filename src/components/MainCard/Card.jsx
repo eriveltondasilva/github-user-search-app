@@ -20,7 +20,7 @@ function CardImage({ src, alt, size = 80 }) {
   return (
     <section className='w-20 h-20'>
       <Image
-        className='rounded-full'
+        className='rounded-full drop-shadow-md'
         src={src}
         alt={alt}
         width={size}
