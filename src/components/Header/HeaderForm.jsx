@@ -1,5 +1,6 @@
 'use client';
 import { Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useUserContext } from '@/contexts/UserContext';
@@ -7,15 +8,17 @@ import useSetUser from '@/hooks/useSetUser';
 import PrimaryButton from '../PrimaryButton';
 
 // =============================
-export default function HeaderForm() {
-  const [search, setSearch] = useState('eriveltondasilva');
+export default function HeaderForm({ userLogin }) {
+  const [search, setSearch] = useState(userLogin);
   const { user, isLoading } = useUserContext();
+  const router = useRouter();
 
-  const { fetchData } = useSetUser(search);
+  const { refetchData } = useSetUser(search);
 
   function handleSearch(e) {
     e.preventDefault();
-    fetchData();
+    router.push(search);
+    refetchData();
   }
 
   return (

@@ -3,12 +3,12 @@ import { useUserContext } from '@/contexts/UserContext';
 import { useEffect } from 'react';
 
 // =============================
-export default function useSetUser(userSearched) {
+export default function useSetUser(user) {
   const { setUser, setIsLoading, setError } = useUserContext();
 
   async function fetchData() {
-    const url = `https://api.github.com/users/${userSearched}`;
-    
+    const url = `https://api.github.com/users/${user}`;
+
     setIsLoading(true);
     setError(null);
 
@@ -33,5 +33,5 @@ export default function useSetUser(userSearched) {
     fetchData();
   }, []);
 
-  return { fetchData };
+  return { refetchData: fetchData };
 }

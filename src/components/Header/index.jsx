@@ -1,6 +1,6 @@
 import Header from './Header';
 
-export default function HeaderIndex() {
+export default function HeaderIndex({userLogin}) {
   return (
     <Header>
       <Header.Wrapper>
@@ -8,7 +8,7 @@ export default function HeaderIndex() {
 
         <Header.ToggleDarkMode />
       </Header.Wrapper>
-      <Header.Form />
+      <Header.Form userLogin={userLogin}/>
     </Header>
   );
 }

@@ -1,12 +1,10 @@
 import Header from '@/components/Header';
 import MainCard from '@/components/MainCard';
 
-export default function HomePage() {
-  const userLogin = 'eriveltondasilva';
-
+export default function UserPage({ params }) {
   return (
     <>
-      <Header userLogin={userLogin} />
+      <Header userLogin={params.user} />
       <MainCard />
     </>
   );
