@@ -38,7 +38,7 @@ export default function CardIndex() {
 
   if (error) {
     return (
-      <Card className='flex bg-red-950'>
+      <Card type='danger'>
         <NotFoundUser error={error} />
       </Card>
     );
