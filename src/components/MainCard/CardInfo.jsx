@@ -8,7 +8,7 @@ export default function CardInfo({ items }) {
         items.map(([title, value], i) => (
           <li key={`${title}-${i}`}>
             <h5 className='text-sm font-medium text-slate-500 dark:text-white'>{title}</h5>
-            <div className='text-lg sm:text-xl font-semibold'>{value}</div>
+            <div className='text-lg font-semibold sm:text-xl'>{value}</div>
           </li>
         ))}
     </ul>
