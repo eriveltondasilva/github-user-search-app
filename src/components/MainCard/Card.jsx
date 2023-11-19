@@ -9,7 +9,7 @@ export default function Card({ type, children }) {
   const styledCard = twJoin(
     'grid sm:grid-cols-[auto_1fr] gap-5 p-6 drop-shadow-md rounded-xl',
     !type && 'bg-white dark:bg-slate-800',
-    type === 'danger' && 'bg-red-500 dark:bg-red-900'
+    type === 'danger' && 'bg-red-600 dark:bg-red-500'
   );
 
   return <main className={styledCard}>{children}</main>;
