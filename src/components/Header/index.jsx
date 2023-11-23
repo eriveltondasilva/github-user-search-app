@@ -1,26 +1,29 @@
 'use client';
+
 import { useState } from 'react';
 import Header from './Header';
 
+// ==============================
 export default function HeaderIndex({ userLogin }) {
-  const [darkMode, setDarkMode] = useState(true);
+  const [hasDarkMode, setHasDarkMode] = useState(true);
 
-  const title = 'devFinder';
+  const TITLE = 'devFinder';
 
   // ------------------------------
   function handleToggleDarkMode() {
-    setDarkMode(!darkMode);
+    setHasDarkMode(!hasDarkMode);
     document.documentElement.classList.toggle('dark');
   }
 
+  // ------------------------------
   return (
     <Header>
       <Header.Wrapper>
-        <Header.Title title={title} />
+        <Header.Title title={TITLE} />
 
         <Header.ToggleDarkMode
           onClick={handleToggleDarkMode}
-          darkMode={darkMode}
+          hasDarkMode={hasDarkMode}
         />
       </Header.Wrapper>
       <Header.Form userLogin={userLogin} />

@@ -13,7 +13,7 @@ export default function HeaderForm({ onSubmit, children }) {
 }
 
 // -----------------------------
-function HeaderFormInput({ search, onChange }) {
+function HeaderFormInput({ hasSearch, onChange }) {
   return (
     <div className='flex items-center w-full'>
       <label htmlFor='headerInput' className='mx-2 text-blue-500 sm:mx-5'>
@@ -23,7 +23,7 @@ function HeaderFormInput({ search, onChange }) {
         className='w-full text-sm bg-transparent sm:text-base text-slate-600 dark:text-white focus:outline-none placeholder:tracking-tight'
         id='headerInput'
         type='text'
-        value={search}
+        value={hasSearch}
         onChange={onChange}
         placeholder='Search GitHub username...'
         autoFocus
@@ -43,5 +43,6 @@ function HeaderFormButton({ isDisabled }) {
   );
 }
 
+// ==============================
 HeaderForm.Input = HeaderFormInput;
 HeaderForm.Button = HeaderFormButton;

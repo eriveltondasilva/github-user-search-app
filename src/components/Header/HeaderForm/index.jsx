@@ -1,4 +1,3 @@
-'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -9,25 +8,26 @@ import HeaderForm from './HeaderForm';
 // =============================
 export default function HeaderFormIndex({ userLogin }) {
   const router = useRouter();
-  const [search, setSearch] = useState(userLogin);
-  const { refetchData } = useSetUser(search);
+  const [hasSearch, setHasSearch] = useState(userLogin);
+  const { refetchData } = useSetUser(hasSearch);
   const { user, isLoading } = useUserContext();
 
-  const isDisabled = isLoading || search === user.login || !search;
+  const isDisabled = isLoading || hasSearch === user.login || !hasSearch;
 
   // ------------------------------
   function handleSubmit(e) {
     e.preventDefault();
-    router.push(`/user/${search}`);
+    router.push(`/user/${hasSearch}`);
     refetchData();
   }
+
   function handleSearch(e) {
-    setSearch(e.target.value.trim().toLowerCase());
+    setHasSearch(e.target.value.trim().toLowerCase());
   }
 
   return (
     <HeaderForm onSubmit={handleSubmit}>
-      <HeaderForm.Input search={search} onChange={handleSearch} />
+      <HeaderForm.Input hasSearch={hasSearch} onChange={handleSearch} />
       <HeaderForm.Button isDisabled={isDisabled} />
     </HeaderForm>
   );
