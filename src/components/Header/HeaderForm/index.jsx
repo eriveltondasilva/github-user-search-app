@@ -8,26 +8,29 @@ import HeaderForm from './HeaderForm';
 // =============================
 export default function HeaderFormIndex({ userLogin }) {
   const router = useRouter();
-  const [hasSearch, setHasSearch] = useState(userLogin);
-  const { refetchData } = useSetUser(hasSearch);
+  const [userSearch, setUserSearch] = useState(userLogin);
+  const { refetchData } = useSetUser(userSearch);
   const { user, isLoading } = useUserContext();
 
-  const isDisabled = isLoading || hasSearch === user.login || !hasSearch;
+  const isDisabled = isLoading || userSearch === user.login || !userSearch;
 
   // ------------------------------
   function handleSubmit(e) {
     e.preventDefault();
-    router.push(`/user/${hasSearch}`);
+    router.push(`/user/${userSearch}`);
     refetchData();
   }
 
   function handleSearch(e) {
-    setHasSearch(e.target.value.trim().toLowerCase());
+    setUserSearch(e.target.value.trim().toLowerCase());
   }
 
   return (
     <HeaderForm onSubmit={handleSubmit}>
-      <HeaderForm.Input hasSearch={hasSearch} onChange={handleSearch} />
+      <HeaderForm.Input
+        userSearch={userSearch}
+        onChange={handleSearch}
+      />
       <HeaderForm.Button isDisabled={isDisabled} />
     </HeaderForm>
   );

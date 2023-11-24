@@ -1,5 +1,5 @@
+import MainCard from '@/components/Card';
 import Header from '@/components/Header';
-import MainCard from '@/components/MainCard';
 
 export default function UserPage({ params }) {
   const USER = params.user;
