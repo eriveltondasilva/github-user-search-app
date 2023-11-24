@@ -52,7 +52,9 @@ function CardHeaderWrapper({ children }) {
 // -----------------------------
 function CardTitle({ title }) {
   return (
-    <h2 className='text-lg font-semibold truncate sm:text-xl' title={title}>
+    <h2
+      className='text-lg font-semibold truncate sm:text-xl'
+      title={title}>
       {title || 'Unnamed User'}
     </h2>
   );

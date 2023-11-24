@@ -23,27 +23,30 @@ export default function CardIndex() {
     twitter_username,
   } = user;
 
-  const infoItems = [
+  const INFO_ITEMS = [
     ['Repos', public_repos],
     ['Followers', followers],
     ['Following', following],
   ];
 
-  const listItems = [
+  const twitter_url =
+    twitter_username && `https://twitter.com/${twitter_username}`;
+
+  const LIST_ITEMS = [
     ['MapPin', location],
-    ['Twitter', twitter_username],
-    ['Link', blog],
+    ['Twitter', twitter_username, twitter_url],
+    ['Link', blog, blog],
     ['Building2', company],
   ];
 
-  const optionDate = {
+  const OPTION_DATE = {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   };
 
   let date = new Date(created_at);
-  date = date?.toLocaleDateString('en-GB', optionDate);
+  date = date?.toLocaleDateString('en-GB', OPTION_DATE);
 
   // ------------------------------
   if (error) {
@@ -64,7 +67,10 @@ export default function CardIndex() {
 
   return (
     <Card>
-      <Card.Image src={avatar_url} alt={name} />
+      <Card.Image
+        src={avatar_url}
+        alt={name}
+      />
       <Card.Content>
         <Card.Header>
           <Card.HeaderWrapper>
@@ -78,9 +84,9 @@ export default function CardIndex() {
 
         <Card.Bio>{bio}</Card.Bio>
 
-        <Card.Info items={infoItems} />
+        <Card.Info items={INFO_ITEMS} />
 
-        <Card.List items={listItems} />
+        <Card.List items={LIST_ITEMS} />
       </Card.Content>
     </Card>
   );
