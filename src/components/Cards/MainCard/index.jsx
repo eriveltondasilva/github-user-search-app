@@ -1,7 +1,7 @@
 'use client';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
+import NotFoundUser from '@/components/NotFoundUser';
 import { useUserContext } from '@/contexts/UserContext';
-import LoadingSkeleton from '../LoadingSkeleton';
-import NotFoundUser from '../NotFoundUser';
 import Card from './Card';
 
 // =============================

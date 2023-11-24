@@ -1,4 +1,4 @@
-import MainCard from '@/components/Card';
+import MainCard from '@/components/Cards/MainCard';
 import Header from '@/components/Header';
 
 export default function UserPage({ params }) {
