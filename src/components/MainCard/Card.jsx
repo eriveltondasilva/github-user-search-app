@@ -75,7 +75,9 @@ function CardLink({ href, children }) {
     <h3>
       <a
         href={href}
-        className='font-medium text-blue-500 truncate dark:text-blue-700'>
+        className='font-medium text-blue-500 truncate dark:text-blue-700'
+        target='_blank'
+        rel='noopener'>
         @{children}
       </a>
     </h3>
