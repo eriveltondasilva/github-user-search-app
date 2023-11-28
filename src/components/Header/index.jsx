@@ -1,29 +1,49 @@
 'use client';
+
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Header from './Header';
 
-export default function HeaderIndex({ userLogin }) {
-  const [darkMode, setDarkMode] = useState(true);
+// ==============================
+export default function HeaderIndex() {
+  const [hasDarkMode, setHasDarkMode] = useState(true);
+  const [search, setSearch] = useState('');
 
-  const title = 'devFinder';
+  const router = useRouter();
 
+  const isDisabled = !search;
   // ------------------------------
   function handleToggleDarkMode() {
-    setDarkMode(!darkMode);
+    setHasDarkMode(!hasDarkMode);
     document.documentElement.classList.toggle('dark');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    router.push(`/user/${search}`);
   }
 
   return (
     <Header>
       <Header.Wrapper>
-        <Header.Title title={title} />
+        <Header.Title />
 
         <Header.ToggleDarkMode
           onClick={handleToggleDarkMode}
-          darkMode={darkMode}
+          hasDarkMode={hasDarkMode}
         />
       </Header.Wrapper>
-      <Header.Form userLogin={userLogin} />
+      <Header.Form onSubmit={handleSubmit}>
+        <Header.Input
+          search={search}
+          setSearch={setSearch}
+        />
+        <Header.Button
+          isDisabled={isDisabled}
+          text='search'
+          type='submit'
+        />
+      </Header.Form>
     </Header>
   );
 }
