@@ -7,7 +7,7 @@ export default function CardListIndex({ items }) {
 
   return (
     <CardList>
-      {items.map(([icon, name, link], index) => (
+      {items.map(({ icon, name, link }, index) => (
         <CardList.Item
           key={`${icon}-${index}`}
           name={name}

@@ -17,6 +17,7 @@ export default function Card({ type, children }) {
 
 // -----------------------------
 function CardImage({ src, alt, size = 80 }) {
+  if (!src) return null
   return (
     <section className='w-20 h-20'>
       <Image

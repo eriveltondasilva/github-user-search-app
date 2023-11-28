@@ -29,7 +29,7 @@ function CardListItem({ icon = '', name = '', link = '' }) {
         !name && 'opacity-50'
       )}>
       <span>{iconMap[icon]}</span>
-      {link ? (
+      {link !== null ? (
         <a
           href={link}
           title={link}

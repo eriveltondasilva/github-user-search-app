@@ -1,7 +1,6 @@
-import { Moon, Sun } from 'lucide-react';
+import PrimaryButton from '@/components/PrimaryButton';
+import { Moon, Search, Sun } from 'lucide-react';
 import Link from 'next/link';
-
-import HeaderForm from './HeaderForm';
 
 // =============================
 export default function Header({ children }) {
@@ -16,10 +15,12 @@ function HeaderWrapper({ children }) {
 }
 
 // -----------------------------
-function HeaderTitle({ title = '' }) {
+function HeaderTitle({ title }) {
+  const TITLE = 'devFinder' || title;
+
   return (
     <h1 className='text-2xl font-bold'>
-      <Link href='/'>{title}</Link>
+      <Link href='/'>{TITLE}</Link>
     </h1>
   );
 }
@@ -39,8 +40,59 @@ function HeaderToggleDarkMode({ hasDarkMode, onClick }) {
   );
 }
 
+// -----------------------------
+function HeaderForm({ onSubmit, children }) {
+  return (
+    <form onSubmit={onSubmit}>
+      <div className='flex justify-between py-2 my-4 bg-white drop-shadow-md rounded-xl dark:bg-slate-800'>
+        {children}
+      </div>
+    </form>
+  );
+}
+// -----------------------------
+function HeaderInput({ search, setSearch }) {
+  function handleChange(e) {
+    setSearch(e.target.value.trim().toLowerCase());
+  }
+
+  return (
+    <div className='flex items-center w-full'>
+      <label
+        htmlFor='headerInput'
+        className='mx-2 text-blue-500 sm:mx-5'>
+        <Search />
+      </label>
+      <input
+        className='w-full text-sm bg-transparent sm:text-base text-slate-600 dark:text-white focus:outline-none placeholder:tracking-tight'
+        id='headerInput'
+        type='text'
+        value={search}
+        onChange={handleChange}
+        placeholder='Search GitHub username...'
+        autoFocus
+      />
+    </div>
+  );
+}
+
+// -----------------------------
+function HeaderButton({ text = '', type, isDisabled }) {
+  return (
+    <div className='mx-2'>
+      <PrimaryButton
+        disabled={isDisabled}
+        type={type || 'button'}>
+        {text}
+      </PrimaryButton>
+    </div>
+  );
+}
+
 // =============================
 Header.Wrapper = HeaderWrapper;
 Header.Title = HeaderTitle;
 Header.ToggleDarkMode = HeaderToggleDarkMode;
 Header.Form = HeaderForm;
+Header.Input = HeaderInput;
+Header.Button = HeaderButton;

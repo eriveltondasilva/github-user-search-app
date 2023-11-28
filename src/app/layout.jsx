@@ -1,8 +1,6 @@
+import ProviderContext from '@/contexts/ProviderContext';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
-
-import ProviderContext from '@/contexts/ProviderContext';
-import UserProvider from '@/contexts/UserContext';
 
 const space_mono = Space_Mono({
   display: 'swap',
@@ -18,14 +16,14 @@ export const metadata = {
 // =============================
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className='dark'>
+    <html
+      lang='en'
+      className='dark'>
       <body className={space_mono.className}>
         <ProviderContext>
-          <UserProvider>
-            <div className='flex justify-center min-h-screen text-slate-950 dark:text-white bg-slate-100 dark:bg-slate-900'>
-              {children}
-            </div>
-          </UserProvider>
+          <div className='flex justify-center min-h-screen text-slate-950 dark:text-white bg-slate-100 dark:bg-slate-900'>
+            {children}
+          </div>
         </ProviderContext>
       </body>
     </html>
