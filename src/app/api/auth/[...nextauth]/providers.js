@@ -6,6 +6,11 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+      // profile(profile) {
+      //   return {
+      //     login: profile.login,
+      //   };
+      // },
     }),
   ],
 };

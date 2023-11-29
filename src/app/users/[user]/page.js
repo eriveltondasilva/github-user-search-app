@@ -1,19 +1,20 @@
 import { Suspense } from 'react';
 
 import MainCard from '@/app/MainCard';
-import Loading from '@/components/CardLoadingSkeleton';
 import Header from '@/components/Header';
+import CardSkeleton from '@/components/Loading/CardSkeleton';
 
 // ==============================
 export default async function UserPage({ params }) {
-  const USER_NAME = params.user;
+  // url busca os dados do user apresente nos params
+  const URL = `https://api.github.com/users/${params.user}`;
 
   return (
     <div className='w-[24rem] sm:w-[36rem] mx-2 px-2 sm:px-4 my-8 sm:my-16'>
       <Header />
 
-      <Suspense fallback={<Loading />}>
-        <MainCard userName={USER_NAME} />
+      <Suspense fallback={<CardSkeleton />}>
+        <MainCard url={URL} />
       </Suspense>
     </div>
   );

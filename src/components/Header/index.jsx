@@ -10,8 +10,6 @@ export default function HeaderIndex() {
   const [search, setSearch] = useState('');
 
   const router = useRouter();
-
-  const isDisabled = !search;
   // ------------------------------
   function handleToggleDarkMode() {
     setHasDarkMode(!hasDarkMode);
@@ -20,7 +18,7 @@ export default function HeaderIndex() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    router.push(`/user/${search}`);
+    router.push(`/users/${search}`);
   }
 
   return (
@@ -39,7 +37,7 @@ export default function HeaderIndex() {
           setSearch={setSearch}
         />
         <Header.Button
-          isDisabled={isDisabled}
+          isDisabled={!search}
           text='search'
           type='submit'
         />

@@ -1,7 +1,11 @@
-export default async function getFetch(URL) {
-  const DATA = await fetch(URL, { cache: 'no-store' }).then((res) =>
-    res.json()
-  );
+export default async function getFetch(url) {
+  const token = process.env.GITHUB_TOKEN;
+
+  const DATA = await fetch(url, {
+    headers: {
+      Authorization: `token ${token}`,
+    },
+  }).then((res) => res.json());
 
   return DATA;
 }

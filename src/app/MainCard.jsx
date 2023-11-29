@@ -2,9 +2,8 @@ import Card from '@/components/Card';
 import getFetch from '@/utils/getFetch';
 
 // =============================
-export default async function MainCard({ userName }) {
-  const URL = `https://api.github.com/users/${userName}`;
-  const DATA_USER = await getFetch(URL);
+export default async function MainCard({ url }) {
+  const DATA_USER = await getFetch(url);
 
   const {
     avatar_url,

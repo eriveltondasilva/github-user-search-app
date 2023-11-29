@@ -1,7 +1,7 @@
 import { twJoin } from 'tailwind-merge';
 
 // ==============================
-export default function Loading() {
+export default function CardSkeleton() {
   return (
     <main
       className={twJoin(

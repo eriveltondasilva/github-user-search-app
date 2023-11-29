@@ -1,4 +1,4 @@
-// import ReposCard from './ReposCard';
+// import ReposCards from './ReposCards';
 
 export default function ReposPage({ params }) {
   const USER = params.user;
