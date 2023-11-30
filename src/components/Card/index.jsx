@@ -12,12 +12,12 @@ export default function Card({ type, children }) {
     type === 'danger' && 'bg-red-600 dark:bg-red-500'
   );
 
-  return <main className={styledCard}>{children}</main>;
+  return <article className={styledCard}>{children}</article>;
 }
 
 // -----------------------------
 function CardImage({ src, alt, size = 80 }) {
-  if (!src) return null
+  if (!src) return null;
   return (
     <section className='w-20 h-20'>
       <Image

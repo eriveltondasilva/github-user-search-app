@@ -22,9 +22,9 @@ export default async function MainCard({ url }) {
   } = DATA_USER;
 
   const INFO_ITEMS = [
-    { name: 'Repos', value: public_repos },
-    { name: 'Followers', value: followers },
-    { name: 'Following', value: following },
+    { name: 'Repos', value: public_repos, link: `/users/${login}/repos` },
+    { name: 'Followers', value: followers, link: `/users/${login}/followers` },
+    { name: 'Following', value: following, link: `/users/${login}/following` },
   ];
 
   const twitter_url = twitter_username

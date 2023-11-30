@@ -7,11 +7,12 @@ export default function CardInfoIndex({ items }) {
 
   return (
     <CardInfo>
-      {items.map(({ name, value }, index) => (
+      {items.map(({ name, value, link }, index) => (
         <CardInfo.Item
           key={`${name}-${index}`}
           name={name}
           value={value}
+          link={link}
         />
       ))}
     </CardInfo>
