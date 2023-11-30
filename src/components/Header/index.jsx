@@ -1,4 +1,4 @@
-import PrimaryButton from '@/components/PrimaryButton';
+import Button from '@/components/Button';
 import { Moon, Search, Sun } from 'lucide-react';
 import Link from 'next/link';
 
@@ -33,6 +33,7 @@ function HeaderToggleDarkMode({ hasDarkMode, onClick }) {
   return (
     <button
       className='flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-500 dark:text-white'
+      type='button'
       onClick={onClick}>
       <span>{hasDarkMode ? 'LIGHT' : 'DARK'}</span>
       {hasDarkMode ? SUN_ICON : MOON_ICON}
@@ -80,11 +81,11 @@ function HeaderInput({ search, setSearch }) {
 function HeaderButton({ text = '', type, isDisabled }) {
   return (
     <div className='mx-2'>
-      <PrimaryButton
+      <Button
         disabled={isDisabled}
-        type={type || 'button'}>
-        {text}
-      </PrimaryButton>
+        type={type || 'button'}
+        text={text}
+      />
     </div>
   );
 }

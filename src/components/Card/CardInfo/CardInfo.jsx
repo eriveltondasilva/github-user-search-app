@@ -11,7 +11,7 @@ export default function CardInfo({ children }) {
 // ------------------------------
 function CardInfoItem({ name = '', value = '', link = '' }) {
   return (
-    <li>
+    <li className='hover:opacity-75'>
       <Link href={link}>
         <h5 className='text-sm font-medium text-slate-500 dark:text-white'>
           {name}

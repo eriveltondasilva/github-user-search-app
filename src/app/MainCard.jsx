@@ -1,4 +1,5 @@
 import Card from '@/components/Card';
+import getDate from '@/utils/getDate';
 import getFetch from '@/utils/getFetch';
 
 // =============================
@@ -21,15 +22,15 @@ export default async function MainCard({ url }) {
     twitter_username,
   } = DATA_USER;
 
+  const twitter_url = twitter_username
+    ? `https://twitter.com/${twitter_username}`
+    : null;
+
   const INFO_ITEMS = [
     { name: 'Repos', value: public_repos, link: `/users/${login}/repos` },
     { name: 'Followers', value: followers, link: `/users/${login}/followers` },
     { name: 'Following', value: following, link: `/users/${login}/following` },
   ];
-
-  const twitter_url = twitter_username
-    ? `https://twitter.com/${twitter_username}`
-    : null;
 
   const LIST_ITEMS = [
     { icon: 'MapPin', name: location, link: null },
@@ -38,18 +39,13 @@ export default async function MainCard({ url }) {
     { icon: 'Building2', name: company, link: null },
   ];
 
-  let date = new Date(created_at);
-  date = date?.toLocaleDateString('en-GB', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
+  const DATE = getDate(created_at);
 
   return (
     <Card>
       <Card.Image
         src={avatar_url}
-        alt={name}
+        alt={name ?? login}
       />
       <Card.Content>
         <Card.Header>
@@ -59,7 +55,7 @@ export default async function MainCard({ url }) {
             <Card.Link href={html_url}>{login}</Card.Link>
           </Card.HeaderWrapper>
 
-          <Card.Subtitle created_at={date} />
+          <Card.Created>Joined {DATE}</Card.Created>
         </Card.Header>
 
         <Card.Bio>{bio}</Card.Bio>

@@ -1,16 +1,30 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { twJoin } from 'tailwind-merge';
 
 import CardInfo from './CardInfo';
 import CardList from './CardList';
 
 // =============================
-export default function Card({ type, children }) {
+export default function Card({ href, type, children }) {
   const styledCard = twJoin(
     'grid sm:grid-cols-[auto_1fr] gap-5 p-6 drop-shadow-md rounded-xl',
     !type && 'bg-white dark:bg-slate-800',
     type === 'danger' && 'bg-red-600 dark:bg-red-500'
   );
+
+  if (href) {
+    return (
+      <article className={styledCard}>
+        <Link
+          href={href}
+          target='_blank'
+          rel='noopener'>
+          {children}
+        </Link>
+      </article>
+    );
+  }
 
   return <article className={styledCard}>{children}</article>;
 }
@@ -47,25 +61,26 @@ function CardHeader({ children }) {
 
 // -----------------------------
 function CardHeaderWrapper({ children }) {
-  return <div className='w-64 truncate'>{children}</div>;
+  return <div className='w-full truncate'>{children}</div>;
 }
 
 // -----------------------------
-function CardTitle({ title }) {
+function CardTitle({ title, index }) {
   return (
     <h2
       className='text-lg font-semibold truncate sm:text-xl'
       title={title}>
-      {title || 'Unnamed User'}
+      <span className={twJoin(!index && 'hidden')}>{index}. </span>
+      {title + ' aaaaaaaaaaaaaa' ?? 'Unnamed User'}
     </h2>
   );
 }
 
 // -----------------------------
-function CardSubtitle({ created_at }) {
+function CardCreated({ children }) {
   return (
     <div className='flex-none text-sm font-medium text-slate-400'>
-      Joined {created_at}
+      {children}
     </div>
   );
 }
@@ -74,13 +89,13 @@ function CardSubtitle({ created_at }) {
 function CardLink({ href, children }) {
   return (
     <h3>
-      <a
+      <Link
         href={href}
         className='font-medium text-blue-500 truncate dark:text-blue-700'
         target='_blank'
         rel='noopener'>
         @{children}
-      </a>
+      </Link>
     </h3>
   );
 }
@@ -88,8 +103,26 @@ function CardLink({ href, children }) {
 // -----------------------------
 function CardBio({ children }) {
   return (
-    <p className='mt-5 text-sm font-medium text-slate-400 dark:text-slate-300'>
+    <p className='mt-5 text-sm font-medium text-slate-500 dark:text-slate-300'>
       {children ?? 'This profile has no bio'}
+    </p>
+  );
+}
+
+// -----------------------------
+function CardDescription({ children }) {
+  return (
+    <p className='mt-5 text-sm font-medium text-slate-500 dark:text-slate-300'>
+      {children ?? 'This repository has no description'}
+    </p>
+  );
+}
+
+// -----------------------------
+function CardTopics({ children }) {
+  return (
+    <p className='mt-5 text-sm font-medium italic text-slate-500 dark:text-slate-300'>
+      {children}
     </p>
   );
 }
@@ -100,8 +133,10 @@ Card.Content = CardContent;
 Card.Header = CardHeader;
 Card.HeaderWrapper = CardHeaderWrapper;
 Card.Title = CardTitle;
-Card.Subtitle = CardSubtitle;
+Card.Created = CardCreated;
 Card.Link = CardLink;
-Card.Bio = CardBio;
 Card.Info = CardInfo;
 Card.List = CardList;
+Card.Bio = CardBio;
+Card.Description = CardDescription;
+Card.Topics = CardTopics;
