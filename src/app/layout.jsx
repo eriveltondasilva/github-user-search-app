@@ -1,5 +1,6 @@
 import ProviderContext from '@/contexts/ProviderContext';
 import { Space_Mono } from 'next/font/google';
+import { twJoin } from 'tailwind-merge';
 import './globals.css';
 
 const space_mono = Space_Mono({
@@ -21,7 +22,11 @@ export default function RootLayout({ children }) {
       className='dark'>
       <body className={space_mono.className}>
         <ProviderContext>
-          <div className='flex justify-center min-h-screen text-slate-950 dark:text-white bg-slate-100 dark:bg-slate-900'>
+          <div
+            className={twJoin(
+              'flex justify-center min-h-screen',
+              'text-slate-950 dark:text-white bg-slate-100 dark:bg-slate-900'
+            )}>
             {children}
           </div>
         </ProviderContext>
