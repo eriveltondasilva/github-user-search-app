@@ -14,7 +14,7 @@ export default async function ReposCards({ dataRepos }) {
     <ul>
       {dataRepos.map((repos, index) => (
         <li
-          key={repos.name}
+          key={repos.id || repos.name}
           className='my-8'>
           <Suspense fallback={<CardSkeleton />}>
             <ReposCard
@@ -34,9 +34,9 @@ function ReposCard({ repos, index }) {
     <Card href={repos.html_url}>
       <Card.Content>
         <Card.Header>
-          <Card.HeaderWrapper>
+          <Card.HeaderWrapper className='sm:w-[30rem]'>
             <Card.Title
-              title={repos.name + ' aaaaaaaaaaaaaaaaaaaaaa11111'}
+              title={repos.name}
               index={index + 1}
             />
           </Card.HeaderWrapper>

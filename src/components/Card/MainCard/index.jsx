@@ -1,4 +1,7 @@
+import { Suspense } from 'react';
+
 import Card from '@/components/Card';
+import CardSkeleton from '@/components/Loading/CardSkeleton';
 import getDate from '@/utils/getDate';
 import getFetch from '@/utils/getFetch';
 
@@ -35,35 +38,38 @@ export default async function MainCard({ url }) {
   const LIST_ITEMS = [
     { icon: 'MapPin', name: location, link: null },
     { icon: 'Twitter', name: twitter_username, link: twitter_url },
-    { icon: 'Link', blog, name: blog, link: blog },
+    { icon: 'Link', blog, name: blog, link: blog || null },
     { icon: 'Building2', name: company, link: null },
   ];
 
   const DATE = getDate(created_at);
 
   return (
-    <Card>
-      <Card.Image
-        src={avatar_url}
-        alt={name ?? login}
-      />
-      <Card.Content>
-        <Card.Header>
-          <Card.HeaderWrapper>
-            <Card.Title title={name} />
+    <Suspense fallback={<CardSkeleton />}>
+      <Card>
+        <Card.Image
+          src={avatar_url}
+          alt={name ?? login}
+          GITHUB_TOKEN
+        />
+        <Card.Content>
+          <Card.Header>
+            <Card.HeaderWrapper>
+              <Card.Title title={name} />
 
-            <Card.Link href={html_url}>{login}</Card.Link>
-          </Card.HeaderWrapper>
+              <Card.Link href={html_url}>{login}</Card.Link>
+            </Card.HeaderWrapper>
 
-          <Card.Created>Joined {DATE}</Card.Created>
-        </Card.Header>
+            <Card.Created>Joined {DATE}</Card.Created>
+          </Card.Header>
 
-        <Card.Bio>{bio}</Card.Bio>
+          <Card.Bio>{bio}</Card.Bio>
 
-        <Card.Info items={INFO_ITEMS} />
+          <Card.Info items={INFO_ITEMS} />
 
-        <Card.List items={LIST_ITEMS} />
-      </Card.Content>
-    </Card>
+          <Card.List items={LIST_ITEMS} />
+        </Card.Content>
+      </Card>
+    </Suspense>
   );
 }

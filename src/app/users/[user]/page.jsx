@@ -1,8 +1,5 @@
-import { Suspense } from 'react';
-
-import MainCard from '@/app/MainCard';
-import Header from '@/app/MainHeader';
-import CardSkeleton from '@/components/Loading/CardSkeleton';
+import MainCard from '@/components/Card/MainCard';
+import Header from '@/components/Header/MainHeader';
 
 // ==============================
 export default async function UserPage({ params }) {
@@ -13,9 +10,7 @@ export default async function UserPage({ params }) {
     <main className='w-[24rem] sm:w-[36rem] mx-2 px-2 sm:px-4 my-8 sm:my-16'>
       <Header />
 
-      <Suspense fallback={<CardSkeleton />}>
-        <MainCard url={URL} />
-      </Suspense>
+      <MainCard url={URL} />
     </main>
   );
 }

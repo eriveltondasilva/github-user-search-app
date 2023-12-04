@@ -1,8 +1,9 @@
 'use client';
 
-import Header from '@/components/Header';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
+import Header from '@/components/Header';
 
 // ==============================
 export default function HeaderIndex() {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { twJoin } from 'tailwind-merge';
+import { twJoin, twMerge } from 'tailwind-merge';
 
 import CardInfo from './CardInfo';
 import CardList from './CardList';
@@ -9,8 +9,9 @@ import CardList from './CardList';
 export default function Card({ href, type, children }) {
   const styledCard = twJoin(
     'grid sm:grid-cols-[auto_1fr] gap-5 p-6 drop-shadow-md rounded-xl',
-    !type && 'bg-white dark:bg-slate-800',
-    type === 'danger' && 'bg-red-600 dark:bg-red-500'
+    type === 'danger'
+      ? 'bg-red-600 dark:bg-red-500'
+      : 'bg-white dark:bg-slate-800'
   );
 
   if (href) {
@@ -32,10 +33,11 @@ export default function Card({ href, type, children }) {
 // -----------------------------
 function CardImage({ src, alt, size = 80 }) {
   if (!src) return null;
+
   return (
     <section className='w-20 h-20'>
       <Image
-        className='rounded-full drop-shadow-md'
+        className='rounded-full shadow-lg'
         src={src}
         alt={alt}
         width={size}
@@ -60,8 +62,12 @@ function CardHeader({ children }) {
 }
 
 // -----------------------------
-function CardHeaderWrapper({ children }) {
-  return <div className='w-full truncate'>{children}</div>;
+function CardHeaderWrapper({ className, children }) {
+  return (
+    <div className={twMerge('w-80 sm:w-64 truncate', className)}>
+      {children}
+    </div>
+  );
 }
 
 // -----------------------------
@@ -71,7 +77,7 @@ function CardTitle({ title, index }) {
       className='text-lg font-semibold truncate sm:text-xl'
       title={title}>
       <span className={twJoin(!index && 'hidden')}>{index}. </span>
-      {title + ' aaaaaaaaaaaaaa' ?? 'Unnamed User'}
+      {title ?? 'Unnamed User'}
     </h2>
   );
 }

@@ -11,7 +11,7 @@ export default function CardList({ children }) {
 }
 
 // ------------------------------
-function CardListItem({ icon = '', name = '', link = '' }) {
+function CardListItem({ icon, name, link }) {
   const iconMap = {
     Link: <LinkIcon size={16} />,
     MapPin: <MapPin size={16} />,
