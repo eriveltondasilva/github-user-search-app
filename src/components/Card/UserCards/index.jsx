@@ -1,14 +1,14 @@
-import Link from 'next/link';
-import { Suspense } from 'react';
+import Link from 'next/link'
+import { Suspense } from 'react'
 
-import Card from '@/components/Card';
-import CardSkeleton from '@/components/Loading/CardSkeleton';
-import getFetch from '@/utils/getFetch';
+import CardSkeleton from '@/components/Loading/CardSkeleton'
+import getFetch from '@/utils/getFetch'
+import Card from '../index'
 
 export default async function UserCards({ url }) {
-  const DATA_FOLLOWING = await getFetch(url);
+  const DATA_FOLLOWING = await getFetch(url)
 
-  if (!DATA_FOLLOWING) return null;
+  if (!DATA_FOLLOWING) return null
 
   return (
     <ul>
@@ -22,7 +22,7 @@ export default async function UserCards({ url }) {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 function UserCard({ user }) {
@@ -43,5 +43,5 @@ function UserCard({ user }) {
         </Card.Content>
       </Card>
     </Link>
-  );
+  )
 }

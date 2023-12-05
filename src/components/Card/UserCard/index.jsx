@@ -1,13 +1,14 @@
-import { Suspense } from 'react';
+import { Suspense } from 'react'
 
-import Card from '@/components/Card';
-import CardSkeleton from '@/components/Loading/CardSkeleton';
-import getFetch from '@/utils/getFetch';
+import CardSkeleton from '@/components/Loading/CardSkeleton'
+import getFetch from '@/utils/getFetch'
+import Card from '../index'
 
 export default async function UserCard({ user }) {
-  const URL = `https://api.github.com/users/${user}`;
-  const DATA_USER = await getFetch(URL);
-  const { avatar_url, bio, html_url, login, name } = DATA_USER;
+  const URL = `https://api.github.com/users/${user}`
+  const DATA_USER = await getFetch(URL)
+
+  const { avatar_url, bio, html_url, login, name } = DATA_USER
 
   return (
     <Suspense fallback={<CardSkeleton />}>
@@ -28,5 +29,5 @@ export default async function UserCard({ user }) {
         </Card.Content>
       </Card>
     </Suspense>
-  );
+  )
 }

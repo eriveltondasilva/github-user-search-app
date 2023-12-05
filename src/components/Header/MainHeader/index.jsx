@@ -1,25 +1,24 @@
-'use client';
+'use client'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
-import Header from '@/components/Header';
+import Header from '../index'
 
 // ==============================
 export default function HeaderIndex() {
-  const [hasDarkMode, setHasDarkMode] = useState(true);
-  const [search, setSearch] = useState('');
+  const [hasDarkMode, setHasDarkMode] = useState(true)
+  const [search, setSearch] = useState('')
 
-  const router = useRouter();
+  const router = useRouter()
   // ------------------------------
   function handleToggleDarkMode() {
-    setHasDarkMode(!hasDarkMode);
-    document.documentElement.classList.toggle('dark');
+    setHasDarkMode(!hasDarkMode)
+    document.documentElement.classList.toggle('dark')
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    router.push(`/users/${search}`);
+    e.preventDefault()
+    router.push(`/users/${search}`)
   }
 
   return (
@@ -44,5 +43,5 @@ export default function HeaderIndex() {
         />
       </Header.Form>
     </Header>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-'use client';
-import { twJoin } from 'tailwind-merge';
+'use client'
+import { twJoin } from 'tailwind-merge'
 
 // ==============================
 export default function PrimaryButton({
@@ -8,14 +8,14 @@ export default function PrimaryButton({
   ...props
 }) {
   const styledButton = twJoin(
-    'text-sm sm:text-md font-semibold tracking-wide',
+    'sm:text-md text-sm font-semibold tracking-wide',
     'px-3 py-2 sm:px-5',
-    'transition duration-100 ease-in rounded-md',
-    'text-white bg-blue-600 dark:bg-blue-500',
+    'rounded-md transition duration-100 ease-in',
+    'bg-blue-600 text-white dark:bg-blue-500',
     disabled
       ? 'cursor-not-allowed opacity-75'
-      : 'hover:bg-blue-700 dark:hover:bg-blue-600 active:outline active:outline-3 active:outline-offset-2'
-  );
+      : 'active:outline-3 hover:bg-blue-700 active:outline active:outline-offset-2 dark:hover:bg-blue-600'
+  )
 
   return (
     <button
@@ -24,5 +24,5 @@ export default function PrimaryButton({
       {...props}>
       {text}
     </button>
-  );
+  )
 }

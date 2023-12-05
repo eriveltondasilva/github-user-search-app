@@ -60,7 +60,9 @@ function CardListItem({ item }) {
           {itemName}
         </a>
       ) : (
-        <span title={itemName}>{itemName}</span>
+        <span title={itemName === 'Not Available' ? null : itemName}>
+          {itemName}
+        </span>
       )}
     </li>
   )

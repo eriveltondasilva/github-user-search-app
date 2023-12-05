@@ -1,16 +1,15 @@
-'use client';
-
-import { useState } from 'react';
-import Header from '@/components/Header';
+'use client'
+import { useState } from 'react'
+import Header from '../index'
 
 // ==============================
 export default function HeaderIndex() {
-  const [hasDarkMode, setHasDarkMode] = useState(true);
+  const [hasDarkMode, setHasDarkMode] = useState(true)
 
   // ------------------------------
   function handleToggleDarkMode() {
-    setHasDarkMode(!hasDarkMode);
-    document.documentElement.classList.toggle('dark');
+    setHasDarkMode(!hasDarkMode)
+    document.documentElement.classList.toggle('dark')
   }
 
   return (
@@ -24,5 +23,5 @@ export default function HeaderIndex() {
         />
       </Header.Wrapper>
     </Header>
-  );
+  )
 }

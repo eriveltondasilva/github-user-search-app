@@ -1,13 +1,13 @@
-import { Suspense } from 'react';
+import { Suspense } from 'react'
 
-import Card from '@/components/Card';
-import CardSkeleton from '@/components/Loading/CardSkeleton';
-import getDate from '@/utils/getDate';
+import CardSkeleton from '@/components/Loading/CardSkeleton'
+import getDate from '@/utils/getDate'
+import Card from '../index'
 
 // =============================
 export default async function ReposCards({ dataRepos }) {
   if (dataRepos.length === 0) {
-    return <div className='py-8 text-xl text-center'>No repository...</div>;
+    return <div className='py-8 text-center text-xl'>No repository...</div>
   }
 
   return (
@@ -25,11 +25,11 @@ export default async function ReposCards({ dataRepos }) {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 function ReposCard({ repos, index }) {
-  const DATE = getDate(repos.created_at);
+  const DATE = getDate(repos.created_at)
   return (
     <Card href={repos.html_url}>
       <Card.Content>
@@ -52,5 +52,5 @@ function ReposCard({ repos, index }) {
         </Card.Topics>
       </Card.Content>
     </Card>
-  );
+  )
 }
