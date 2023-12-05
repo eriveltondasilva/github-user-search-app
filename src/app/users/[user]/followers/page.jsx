@@ -7,7 +7,7 @@ import LinkNext from '@/components/LinkNext';
 // ==============================
 export default async function FollowersPage({ params }) {
   // url busca os dados do user apresente nos params
-  const URL = `https://api.github.com/users/${params.user}/followers?sort=login&per_page=50`;
+  const URL = `https://api.github.com/users/${params.user}/followers?per_page=50`;
 
   return (
     <main className='w-[24rem] sm:w-[36rem] mx-2 px-2 sm:px-4 my-8 sm:my-16'>
