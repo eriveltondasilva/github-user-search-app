@@ -1,8 +1,8 @@
 'use client';
+import { Home } from 'lucide-react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Home } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { twJoin } from 'tailwind-merge';
 
@@ -14,7 +14,7 @@ const styledButton = twJoin(
 export default function LoginPage() {
   const [isDisabled, setIsDisabled] = useState(false);
   const { data: session, status } = useSession();
-  const { name, email, image } = session?.user ?? '';
+  const { name, email, image, login } = session?.user ?? '';
 
   const styledStatus = twJoin(
     'font-semibold uppercase',
@@ -38,6 +38,7 @@ export default function LoginPage() {
     signOut();
   }
 
+  console.log(session);
   return (
     <main className='flex items-center justify-center'>
       <div className='bg-white border border-gray-200 shadow-sm mt-7 rounded-xl dark:bg-gray-800 dark:border-gray-700'>
@@ -48,7 +49,11 @@ export default function LoginPage() {
             </h1>
             <br />
 
-            <InfoUser name={name} email={email} image={image} />
+            <InfoUser
+              name={name}
+              email={email}
+              image={image}
+            />
 
             <div className={styledStatus}>
               {status == 'loading' ? status + '...' : status}
@@ -61,12 +66,16 @@ export default function LoginPage() {
             {session ? (
               <Button onClick={handleSignOut}>Sign out</Button>
             ) : (
-              <Button onClick={handleSignIn} disabled={isDisabled}>
+              <Button
+                onClick={handleSignIn}
+                disabled={isDisabled}>
                 Sign in with Google
               </Button>
             )}
-            <Link href='/' className={styledButton}>
-              <Home size={18}/>
+            <Link
+              href='/'
+              className={styledButton}>
+              <Home size={18} />
               Go to Home
             </Link>
           </div>
@@ -101,7 +110,11 @@ function InfoUser({ name, email, image }) {
 
 function Button({ onClick, children, ...props }) {
   return (
-    <button type='button' onClick={onClick} className={styledButton} {...props}>
+    <button
+      type='button'
+      onClick={onClick}
+      className={styledButton}
+      {...props}>
       <svg
         className='w-4 h-auto'
         width='46'
