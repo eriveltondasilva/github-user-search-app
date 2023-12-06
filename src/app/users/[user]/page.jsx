@@ -3,7 +3,7 @@ import Header from '@/components/Header/MainHeader'
 import getFetch from '@/utils/getFetch'
 
 export const metadata = {
-  title: `User | ${process.env.APP_TITLE}`,
+  title: `Users | ${process.env.APP_TITLE}`,
 }
 
 // ==============================

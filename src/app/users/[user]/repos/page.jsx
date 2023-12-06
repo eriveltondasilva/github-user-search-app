@@ -6,7 +6,7 @@ import LinkNext from '@/components/LinkNext'
 import getFetch from '@/utils/getFetch'
 
 export const metadata = {
-  title: `Repository | ${process.env.APP_TITLE}`,
+  title: `Repositories | ${process.env.APP_TITLE}`,
 }
 
 // ==============================
