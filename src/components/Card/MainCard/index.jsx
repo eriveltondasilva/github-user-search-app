@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { ErrorBoundary, Suspense } from 'react'
 
 import CardSkeleton from '@/components/Loading/CardSkeleton'
 import getDate from '@/utils/getDate'
@@ -7,7 +7,7 @@ import Card from '../index'
 
 // =============================
 export default async function MainCard({ url }) {
-  const DATA_USER = await getFetch(url)
+  const DATA = await getFetch(url)
 
   const {
     avatar_url,
@@ -23,7 +23,7 @@ export default async function MainCard({ url }) {
     company,
     location,
     twitter_username,
-  } = DATA_USER
+  } = DATA
 
   const twitter_url = twitter_username
     ? `https://twitter.com/${twitter_username}`

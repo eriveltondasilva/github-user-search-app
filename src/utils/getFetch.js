@@ -1,11 +1,13 @@
 export default async function getFetch(url) {
-  const token = process.env.GITHUB_TOKEN
+  const token = `token ${process.env.GITHUB_TOKEN}`
 
-  const DATA = await fetch(url, {
+  const RESPONSE = await fetch(url, {
     headers: {
-      Authorization: `token ${token}`,
+      Authorization: token,
     },
-  }).then((res) => res.json())
+  })
+
+  const DATA = await RESPONSE.json()
 
   return DATA
 }

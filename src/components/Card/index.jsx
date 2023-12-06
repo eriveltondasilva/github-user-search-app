@@ -141,8 +141,9 @@ Card.HeaderWrapper = CardHeaderWrapper
 Card.Title = CardTitle
 Card.Created = CardCreated
 Card.Link = CardLink
-Card.Info = CardInfo
-Card.List = CardList
 Card.Bio = CardBio
 Card.Description = CardDescription
 Card.Topics = CardTopics
+
+Card.Info = CardInfo
+Card.List = CardList

@@ -37,9 +37,15 @@ function CardListItem({ item }) {
     Twitter: <Twitter size={16} />,
   }
 
-  const regex = /https:\/\/|http:\/\//
+  // regex para remover 'http(s)://' e '/' dos links
+  const regex = /^https?:\/\/|\/$/
 
-  const itemName = name?.replace(regex, '') || 'Not Available'
+  const itemName =
+    name?.replace(regex, '') || 'Not Available'
+
+  const itemTitle = link
+    ? { title: link, target: '_blank', rel: 'noopener' }
+    : { title: itemName !== 'Not Available' && itemName }
 
   return (
     <li
@@ -51,18 +57,14 @@ function CardListItem({ item }) {
         !name && 'opacity-50'
       )}>
       <span>{iconMap[icon]}</span>
-      {link !== null ? (
+      {link ? (
         <a
           href={link}
-          title={link}
-          target='_blank'
-          rel='noopener'>
+          {...itemTitle}>
           {itemName}
         </a>
       ) : (
-        <span title={itemName === 'Not Available' ? null : itemName}>
-          {itemName}
-        </span>
+        <span {...itemTitle}>{itemName}</span>
       )}
     </li>
   )
