@@ -5,6 +5,10 @@ import ReposHeader from '@/components/Header/ReposHeader'
 import LinkNext from '@/components/LinkNext'
 import getFetch from '@/utils/getFetch'
 
+export const metadata = {
+  title: `Repository | ${process.env.APP_TITLE}`,
+}
+
 // ==============================
 export default async function ReposPage({ params }) {
   const user = params.user

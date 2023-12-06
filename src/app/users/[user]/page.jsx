@@ -2,6 +2,10 @@ import MainCard from '@/components/Card/MainCard'
 import Header from '@/components/Header/MainHeader'
 import getFetch from '@/utils/getFetch'
 
+export const metadata = {
+  title: `User | ${process.env.APP_TITLE}`,
+}
+
 // ==============================
 export default async function UserPage({ params }) {
   // url busca os dados do user apresente nos params
