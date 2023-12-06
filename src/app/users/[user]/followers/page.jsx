@@ -3,11 +3,17 @@ import UserCards from '@/components/Card/UserCards'
 import Divider from '@/components/Divider'
 import ReposHeader from '@/components/Header/ReposHeader'
 import LinkNext from '@/components/LinkNext'
+import getFetch from '@/utils/getFetch'
 
 // ==============================
 export default async function FollowersPage({ params }) {
-  // url busca os dados do user apresente nos params
-  const url = `https://api.github.com/users/${params.user}/followers?per_page=50`
+  const user = params.user
+
+  const userUrl = `https://api.github.com/users/${user}`
+  const followersUrl = `https://api.github.com/users/${user}/followers?per_page=50`
+
+  const { data: userData } = await getFetch(userUrl)
+  const { data: followersData } = await getFetch(followersUrl)
 
   return (
     <main className='mx-2 my-8 w-[24rem] px-2 sm:my-16 sm:w-[36rem] sm:px-4'>
@@ -16,15 +22,15 @@ export default async function FollowersPage({ params }) {
       <div className='my-6'>
         <LinkNext
           text='voltar'
-          href={`/users/${params.user}`}
+          href={`/users/${user}`}
         />
       </div>
 
-      <UserCard user={params.user} />
+      <UserCard user={userData} />
 
       <Divider text='followers' />
 
-      <UserCards url={url} />
+      <UserCards users={followersData} />
     </main>
   )
 }

@@ -1,14 +1,13 @@
 import { Suspense } from 'react'
 
 import CardSkeleton from '@/components/Loading/CardSkeleton'
-import getFetch from '@/utils/getFetch'
 import Card from '../index'
 
-export default async function UserCard({ user }) {
-  const url = `https://api.github.com/users/${user}`
-  const { data } = await getFetch(url)
+// ==============================
+export default function UserCard({ user = {} }) {
+  const { avatar_url, bio, html_url, login, name } = user
 
-  const { avatar_url, bio, html_url, login, name } = data
+  if (!user) return null
 
   return (
     <Suspense fallback={<CardSkeleton />}>

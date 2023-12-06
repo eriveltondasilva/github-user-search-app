@@ -2,13 +2,10 @@ import { Suspense } from 'react'
 
 import CardSkeleton from '@/components/Loading/CardSkeleton'
 import getDate from '@/utils/getDate'
-import getFetch from '@/utils/getFetch'
 import Card from '../index'
 
 // =============================
-export default async function MainCard({ url }) {
-  const { data, error } = await getFetch(url)
-
+export default function MainCard({ user, error }) {
   const {
     avatar_url,
     bio,
@@ -23,7 +20,7 @@ export default async function MainCard({ url }) {
     company,
     location,
     twitter_username,
-  } = data
+  } = user
 
   const twitterUrl = twitter_username
     ? `https://twitter.com/${twitter_username}`
@@ -45,6 +42,9 @@ export default async function MainCard({ url }) {
   const formatDate = getDate(created_at)
 
   //
+  if (!user) return null
+
+  //
   if (error) {
     return (
       <Card type='danger'>
@@ -59,7 +59,6 @@ export default async function MainCard({ url }) {
         <Card.Image
           src={avatar_url}
           alt={name ?? login}
-          GITHUB_TOKEN
         />
         <Card.Content>
           <Card.Header>

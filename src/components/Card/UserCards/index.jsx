@@ -2,17 +2,15 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 
 import CardSkeleton from '@/components/Loading/CardSkeleton'
-import getFetch from '@/utils/getFetch'
 import Card from '../index'
 
-export default async function UserCards({ url }) {
-  const { data } = await getFetch(url)
-
-  if (!data) return null
+// ==============================
+export default function UserCards({ users }) {
+  if (!users) return null
 
   return (
     <ul>
-      {data.map((user) => (
+      {users.map((user) => (
         <li
           key={user.login}
           className='my-8'>
@@ -25,19 +23,22 @@ export default async function UserCards({ url }) {
   )
 }
 
+// ------------------------------
 function UserCard({ user }) {
+  const { avatar_url, login, html_url } = user
+
   return (
-    <Link href={`/users/${user.login}`}>
+    <Link href={`/users/${login}`}>
       <Card>
         <Card.Image
-          src={user.avatar_url}
-          alt={user.login}
+          src={avatar_url}
+          alt={login}
         />
         <Card.Content>
           <Card.Header>
             <Card.HeaderWrapper className='sm:w-96'>
-              <Card.Title title={user.login} />
-              <Card.Description>{user.html_url}</Card.Description>
+              <Card.Title title={login} />
+              <Card.Description>{html_url}</Card.Description>
             </Card.HeaderWrapper>
           </Card.Header>
         </Card.Content>

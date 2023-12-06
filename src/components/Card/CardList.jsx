@@ -40,12 +40,11 @@ function CardListItem({ item }) {
   // regex para remover 'http(s)://' e '/' dos links
   const regex = /^https?:\/\/|\/$/
 
-  const itemName =
-    name?.replace(regex, '') || 'Not Available'
+  const itemName = name?.replace(regex, '') || 'Not Available'
 
   const itemTitle = link
     ? { title: link, target: '_blank', rel: 'noopener' }
-    : { title: itemName !== 'Not Available' && itemName }
+    : { title: itemName !== 'Not Available' ? itemName : '' }
 
   return (
     <li

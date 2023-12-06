@@ -5,7 +5,7 @@ import getDate from '@/utils/getDate'
 import Card from '../index'
 
 // =============================
-export default async function ReposCards({ items }) {
+export default function ReposCards({ items }) {
   if (!items) {
     return <div className='py-8 text-center text-xl'>No repository...</div>
   }
@@ -28,10 +28,11 @@ export default async function ReposCards({ items }) {
   )
 }
 
+// ------------------------------
 function ReposCard({ item, index }) {
-  const date = getDate(item.created_at)
-  const { html_url, name, description, topics } = item
-  const topicsText = topics ? 'Topics: ' + topics.join(', ') : 'No topics'
+  const { html_url, name, description, created_at, topics } = item
+  const formatDate = getDate(created_at)
+  const topicsText = topics ? `Topics: ${topics.join(', ')}` : 'No topics'
 
   return (
     <Card href={html_url}>
@@ -44,7 +45,7 @@ function ReposCard({ item, index }) {
             />
           </Card.HeaderWrapper>
         </Card.Header>
-        <Card.Created>Created in {date}</Card.Created>
+        <Card.Created>Created in {formatDate}</Card.Created>
 
         <Card.Description>{description}</Card.Description>
 

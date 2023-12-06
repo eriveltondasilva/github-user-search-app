@@ -7,12 +7,16 @@ import getFetch from '@/utils/getFetch'
 
 // ==============================
 export default async function ReposPage({ params }) {
-  // url busca os dados do user apresente nos params
-  const URL = `https://api.github.com/users/${params.user}/repos?sort=created&per_page=50`
-  const { data } = await getFetch(URL)
+  const user = params.user
 
-  const lengthRepos = data.length
-  const dividerText = `${lengthRepos > 0 ? lengthRepos : ''} ${
+  const userUrl = `https://api.github.com/users/${user}`
+  const reposUrl = `https://api.github.com/users/${user}/repos?sort=created&per_page=50`
+
+  const { data: userData } = await getFetch(userUrl)
+  const { data: reposData } = await getFetch(reposUrl)
+
+  const lengthRepos = reposData?.length
+  const dividerText = `${lengthRepos ? lengthRepos : ''} ${
     lengthRepos > 1 ? 'repositories' : 'repository'
   }`
 
@@ -23,15 +27,15 @@ export default async function ReposPage({ params }) {
       <div className='my-6'>
         <LinkNext
           text='voltar'
-          href={`/users/${params.user}`}
+          href={`/users/${user}`}
         />
       </div>
 
-      <UserCard user={params.user} />
+      <UserCard user={userData} />
 
       <Divider text={dividerText.trim()} />
 
-      <ReposCards items={data} />
+      <ReposCards items={reposData} />
     </main>
   )
 }
