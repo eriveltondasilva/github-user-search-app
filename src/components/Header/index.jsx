@@ -65,7 +65,7 @@ function HeaderForm({ onSubmit, children }) {
 // -----------------------------
 function HeaderInput({ search, setSearch }) {
   function handleChange(e) {
-    const regex = /[^a-z]/g
+    const regex = /[^a-z0-9_-]/g
     setSearch(e.target.value.trim().toLowerCase().replace(regex, ''))
   }
 

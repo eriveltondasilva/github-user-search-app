@@ -6,13 +6,13 @@ import getFetch from '@/utils/getFetch'
 import Card from '../index'
 
 export default async function UserCards({ url }) {
-  const DATA_FOLLOWING = await getFetch(url)
+  const { data } = await getFetch(url)
 
-  if (!DATA_FOLLOWING) return null
+  if (!data) return null
 
   return (
     <ul>
-      {DATA_FOLLOWING.map((user) => (
+      {data.map((user) => (
         <li
           key={user.login}
           className='my-8'>

@@ -5,10 +5,10 @@ import getFetch from '@/utils/getFetch'
 import Card from '../index'
 
 export default async function UserCard({ user }) {
-  const URL = `https://api.github.com/users/${user}`
-  const DATA_USER = await getFetch(URL)
+  const url = `https://api.github.com/users/${user}`
+  const { data } = await getFetch(url)
 
-  const { avatar_url, bio, html_url, login, name } = DATA_USER
+  const { avatar_url, bio, html_url, login, name } = data
 
   return (
     <Suspense fallback={<CardSkeleton />}>

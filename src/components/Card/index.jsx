@@ -4,6 +4,7 @@ import { twJoin, twMerge } from 'tailwind-merge'
 
 import CardInfo from './CardInfo'
 import CardList from './CardList'
+import CardNotFound from './CardNotFound'
 
 // =============================
 export default function Card({ href, type, children }) {
@@ -145,5 +146,7 @@ Card.Bio = CardBio
 Card.Description = CardDescription
 Card.Topics = CardTopics
 
+// -----------------------------
 Card.Info = CardInfo
 Card.List = CardList
+Card.NotFound = CardNotFound

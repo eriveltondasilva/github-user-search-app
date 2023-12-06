@@ -1,4 +1,4 @@
-import { ErrorBoundary, Suspense } from 'react'
+import { Suspense } from 'react'
 
 import CardSkeleton from '@/components/Loading/CardSkeleton'
 import getDate from '@/utils/getDate'
@@ -7,7 +7,7 @@ import Card from '../index'
 
 // =============================
 export default async function MainCard({ url }) {
-  const DATA = await getFetch(url)
+  const { data, error } = await getFetch(url)
 
   const {
     avatar_url,
@@ -23,26 +23,35 @@ export default async function MainCard({ url }) {
     company,
     location,
     twitter_username,
-  } = DATA
+  } = data
 
-  const twitter_url = twitter_username
+  const twitterUrl = twitter_username
     ? `https://twitter.com/${twitter_username}`
     : null
 
-  const INFO_ITEMS = [
+  const infoItems = [
     { name: 'Repos', value: public_repos, link: `/users/${login}/repos` },
     { name: 'Followers', value: followers, link: `/users/${login}/followers` },
     { name: 'Following', value: following, link: `/users/${login}/following` },
   ]
 
-  const LIST_ITEMS = [
+  const listItems = [
     { icon: 'MapPin', name: location, link: null },
-    { icon: 'Twitter', name: twitter_username, link: twitter_url },
+    { icon: 'Twitter', name: twitter_username, link: twitterUrl },
     { icon: 'Link', blog, name: blog, link: blog || null },
     { icon: 'Building2', name: company, link: null },
   ]
 
-  const DATE = getDate(created_at)
+  const formatDate = getDate(created_at)
+
+  //
+  if (error) {
+    return (
+      <Card type='danger'>
+        <Card.NotFound error={error} />
+      </Card>
+    )
+  }
 
   return (
     <Suspense fallback={<CardSkeleton />}>
@@ -60,14 +69,14 @@ export default async function MainCard({ url }) {
               <Card.Link href={html_url}>{login}</Card.Link>
             </Card.HeaderWrapper>
 
-            <Card.Created>Joined {DATE}</Card.Created>
+            <Card.Created>Joined {formatDate}</Card.Created>
           </Card.Header>
 
           <Card.Bio>{bio}</Card.Bio>
 
-          <Card.Info items={INFO_ITEMS} />
+          <Card.Info items={infoItems} />
 
-          <Card.List items={LIST_ITEMS} />
+          <Card.List items={listItems} />
         </Card.Content>
       </Card>
     </Suspense>

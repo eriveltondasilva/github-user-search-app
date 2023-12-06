@@ -7,7 +7,7 @@ import LinkNext from '@/components/LinkNext'
 // ==============================
 export default function FollowingPage({ params }) {
   // url busca os dados do user apresente nos params
-  const URL = `https://api.github.com/users/${params.user}/following?sort=id&per_page=50`
+  const url = `https://api.github.com/users/${params.user}/following?sort=id&per_page=50`
 
   return (
     <main className='mx-2 my-8 w-[24rem] px-2 sm:my-16 sm:w-[36rem] sm:px-4'>
@@ -24,7 +24,7 @@ export default function FollowingPage({ params }) {
 
       <Divider text='Following' />
 
-      <UserCards url={URL} />
+      <UserCards url={url} />
     </main>
   )
 }
