@@ -1,6 +1,6 @@
 import { twJoin } from 'tailwind-merge'
 
-export default function Divider({ text = '' }) {
+export default function Divider({ children }) {
   return (
     <div
       className={twJoin(
@@ -11,7 +11,7 @@ export default function Divider({ text = '' }) {
         'text-gray-800 before:border-gray-300 after:border-gray-300',
         'dark:text-white dark:before:border-gray-600 dark:after:border-gray-600'
       )}>
-      {text}
+      {children}
     </div>
   )
 }

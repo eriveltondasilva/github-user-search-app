@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { twJoin } from 'tailwind-merge'
 
-export default function LinkNext({ text = '', href = '' }) {
+export default function LinkNext({ href = '', children }) {
   return (
     <Link
       className={twJoin(
@@ -14,7 +14,7 @@ export default function LinkNext({ text = '', href = '' }) {
         'dark:bg-blue-500 dark:hover:bg-blue-600'
       )}
       href={href}>
-      {text}
+      {children}
     </Link>
   )
 }

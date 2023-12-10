@@ -24,15 +24,12 @@ export default async function FollowingPage({ params }) {
       <ReposHeader />
 
       <div className='my-6'>
-        <LinkNext
-          text='voltar'
-          href={`/users/${user}`}
-        />
+        <LinkNext href={`/users/${user}`}>voltar</LinkNext>
       </div>
 
       <UserCard user={userData} />
 
-      <Divider text='Following' />
+      <Divider>Following</Divider>
 
       <UserCards users={followingData} />
     </main>
