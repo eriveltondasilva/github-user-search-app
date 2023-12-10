@@ -4,13 +4,13 @@ import Image from 'next/image'
 export default function InfoUser({ user }) {
   if (!user) return null
 
-  const { name, email, avatar } = user
+  const { name, email, image } = user
 
   return (
     <InfoUserRoot>
       <InfoUserImage
         alt={name}
-        src={avatar}
+        src={image}
       />
       <InfoUserTitle>{name}</InfoUserTitle>
       <InfoUserEmail>{email}</InfoUserEmail>
