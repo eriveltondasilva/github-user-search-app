@@ -17,12 +17,10 @@ function HeaderWrapper({ children }) {
 }
 
 // -----------------------------
-function HeaderTitle({ title }) {
-  const TITLE = 'devFinder' || title
-
+function HeaderTitle({ children }) {
   return (
     <h1 className='text-2xl font-bold'>
-      <Link href='/'>{TITLE}</Link>
+      <Link href='/'>{children ?? 'devFinder'}</Link>
     </h1>
   )
 }
@@ -93,14 +91,14 @@ function HeaderInput({ search, setSearch }) {
 }
 
 // -----------------------------
-function HeaderButton({ text = '', type, isDisabled }) {
+function HeaderButton({ type, isDisabled, children }) {
   return (
     <div className='mx-2'>
       <Button
         disabled={isDisabled}
-        type={type || 'button'}
-        text={text}
-      />
+        type={type || 'button'}>
+        {children}
+      </Button>
     </div>
   )
 }

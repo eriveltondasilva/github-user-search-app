@@ -48,7 +48,7 @@ export default function MainCard({ user, error }) {
   if (error) {
     return (
       <Card type='danger'>
-        <Card.NotFound error={error} />
+        <Card.NotFound>{error}</Card.NotFound>
       </Card>
     )
   }
@@ -63,7 +63,7 @@ export default function MainCard({ user, error }) {
         <Card.Content>
           <Card.Header>
             <Card.HeaderWrapper>
-              <Card.Title title={name} />
+              <Card.Title>{name}</Card.Title>
 
               <Card.Link href={html_url}>{login}</Card.Link>
             </Card.HeaderWrapper>

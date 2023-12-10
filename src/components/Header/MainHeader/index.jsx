@@ -38,9 +38,9 @@ export default function HeaderIndex() {
         />
         <Header.Button
           isDisabled={!search}
-          text='search'
-          type='submit'
-        />
+          type='submit'>
+          search
+        </Header.Button>
       </Header.Form>
     </Header>
   )

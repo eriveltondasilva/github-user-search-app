@@ -19,7 +19,7 @@ export default function UserCard({ user = {} }) {
         <Card.Content>
           <Card.Header>
             <Card.HeaderWrapper className='sm:w-96'>
-              <Card.Title title={name} />
+              <Card.Title>{name}</Card.Title>
 
               <Card.Link href={html_url}>{login}</Card.Link>
             </Card.HeaderWrapper>

@@ -39,10 +39,7 @@ function ReposCard({ item, index }) {
       <Card.Content>
         <Card.Header>
           <Card.HeaderWrapper className='sm:w-[30rem]'>
-            <Card.Title
-              title={name}
-              index={index + 1}
-            />
+            <Card.Title index={index + 1}>{name}</Card.Title>
           </Card.HeaderWrapper>
         </Card.Header>
         <Card.Created>Created in {formatDate}</Card.Created>

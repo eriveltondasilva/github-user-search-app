@@ -37,7 +37,7 @@ function UserCard({ user }) {
         <Card.Content>
           <Card.Header>
             <Card.HeaderWrapper className='sm:w-96'>
-              <Card.Title title={login} />
+              <Card.Title>{login}</Card.Title>
               <Card.Description>{html_url}</Card.Description>
             </Card.HeaderWrapper>
           </Card.Header>

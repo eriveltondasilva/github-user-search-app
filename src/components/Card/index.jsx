@@ -72,13 +72,11 @@ function CardHeaderWrapper({ className, children }) {
 }
 
 // -----------------------------
-function CardTitle({ title, index }) {
+function CardTitle({ index, children }) {
   return (
-    <h2
-      className='truncate text-lg font-semibold sm:text-xl'
-      title={title}>
+    <h2 className='truncate text-lg font-semibold sm:text-xl'>
       <span className={twJoin(!index && 'hidden')}>{index}. </span>
-      {title ?? 'Unnamed User'}
+      {children ?? 'Unnamed User'}
     </h2>
   )
 }
