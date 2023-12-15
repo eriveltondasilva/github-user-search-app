@@ -17,7 +17,7 @@ export default function CardList({ items }) {
   )
 }
 
-// ==============================
+// ------------------------------
 function CardListRoot({ children }) {
   return (
     <footer>

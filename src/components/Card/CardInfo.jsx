@@ -17,7 +17,7 @@ export default function CardInfo({ items }) {
   )
 }
 
-// ==============================
+// ------------------------------
 function CardInfoRoot({ children }) {
   return (
     <ul

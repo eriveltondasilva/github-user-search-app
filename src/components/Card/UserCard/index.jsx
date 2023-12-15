@@ -4,7 +4,7 @@ import CardSkeleton from '@/components/Loading/CardSkeleton'
 import Card from '../index'
 
 // ==============================
-export default function UserCard({ user = {} }) {
+export default function UserCard({ user }) {
   const { avatar_url, bio, html_url, login, name } = user
 
   if (!user) return null

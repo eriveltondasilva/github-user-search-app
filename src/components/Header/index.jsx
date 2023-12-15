@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { Moon, Search, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { twJoin } from 'tailwind-merge'
@@ -10,14 +11,14 @@ export default function Header({ children }) {
 }
 
 // -----------------------------
-function HeaderWrapper({ children }) {
+Header.Wrapper = function ({ children }) {
   return (
     <div className='mb-8 flex items-baseline justify-between'>{children}</div>
   )
 }
 
 // -----------------------------
-function HeaderTitle({ children }) {
+Header.Title = function ({ children }) {
   return (
     <h1 className='text-2xl font-bold'>
       <Link href='/'>{children ?? 'devFinder'}</Link>
@@ -26,9 +27,12 @@ function HeaderTitle({ children }) {
 }
 
 // -----------------------------
-function HeaderToggleDarkMode({ hasDarkMode, onClick }) {
+Header.ToggleDarkMode = function ({ hasDarkMode, onClick }) {
   const SUN_ICON = <Sun className='fill-current' />
   const MOON_ICON = <Moon className='fill-current stroke-0' />
+
+  const MODE_TEXT = hasDarkMode ? 'LIGHT' : 'DARK'
+  const MODE_ICON = hasDarkMode ? SUN_ICON : MOON_ICON
 
   return (
     <button
@@ -39,14 +43,14 @@ function HeaderToggleDarkMode({ hasDarkMode, onClick }) {
       )}
       type='button'
       onClick={onClick}>
-      <span>{hasDarkMode ? 'LIGHT' : 'DARK'}</span>
-      {hasDarkMode ? SUN_ICON : MOON_ICON}
+      <span>{MODE_TEXT}</span>
+      {MODE_ICON}
     </button>
   )
 }
 
 // -----------------------------
-function HeaderForm({ onSubmit, children }) {
+Header.Form = function ({ onSubmit, children }) {
   return (
     <form onSubmit={onSubmit}>
       <div
@@ -60,12 +64,19 @@ function HeaderForm({ onSubmit, children }) {
     </form>
   )
 }
+
 // -----------------------------
-function HeaderInput({ search, setSearch }) {
+Header.Input = function ({ search, setSearch }) {
   function handleChange(e) {
     const regex = /[^a-z0-9_-]/g
     setSearch(e.target.value.trim().toLowerCase().replace(regex, ''))
   }
+
+  const styledInput = twJoin(
+    'w-full focus:outline-none',
+    'text-sm placeholder:tracking-tight sm:text-base',
+    'bg-transparent text-slate-600 dark:text-white'
+  )
 
   return (
     <div className='flex w-full items-center'>
@@ -75,10 +86,7 @@ function HeaderInput({ search, setSearch }) {
         <Search />
       </label>
       <input
-        className={twJoin(
-          'w-full text-sm placeholder:tracking-tight focus:outline-none sm:text-base',
-          'bg-transparent text-slate-600 dark:text-white'
-        )}
+        className={styledInput}
         id='headerInput'
         type='text'
         value={search}
@@ -91,22 +99,14 @@ function HeaderInput({ search, setSearch }) {
 }
 
 // -----------------------------
-function HeaderButton({ type, isDisabled, children }) {
+Header.Button = function ({ type, isDisabled, children }) {
   return (
     <div className='mx-2'>
       <Button
         disabled={isDisabled}
-        type={type || 'button'}>
+        type={type ?? 'button'}>
         {children}
       </Button>
     </div>
   )
 }
-
-// =============================
-Header.Wrapper = HeaderWrapper
-Header.Title = HeaderTitle
-Header.ToggleDarkMode = HeaderToggleDarkMode
-Header.Form = HeaderForm
-Header.Input = HeaderInput
-Header.Button = HeaderButton
