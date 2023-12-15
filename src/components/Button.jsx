@@ -2,7 +2,12 @@
 import { twJoin } from 'tailwind-merge'
 
 // ==============================
-function PrimaryButton({ disabled = false, full = false, children, ...props }) {
+export default function PrimaryButton({
+  disabled = false,
+  full = false,
+  children,
+  ...props
+}) {
   const styledButton = twJoin(
     'sm:text-md text-sm font-semibold tracking-wide',
     'px-3 py-2 sm:px-5',
@@ -23,7 +28,3 @@ function PrimaryButton({ disabled = false, full = false, children, ...props }) {
     </button>
   )
 }
-
-// ==============================
-const Button = PrimaryButton
-export default Button

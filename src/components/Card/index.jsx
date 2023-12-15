@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import Image from 'next/image'
 import Link from 'next/link'
 import { twJoin, twMerge } from 'tailwind-merge'
@@ -9,7 +10,8 @@ import CardNotFound from './CardNotFound'
 // =============================
 export default function Card({ href, type, children }) {
   const styledCard = twJoin(
-    'grid gap-5 rounded-xl p-6 drop-shadow-md sm:grid-cols-[auto_1fr]',
+    'grid gap-5 p-6 sm:grid-cols-[auto_1fr]',
+    'rounded-xl drop-shadow-md',
     type === 'danger'
       ? 'bg-red-600 dark:bg-red-500'
       : 'bg-white dark:bg-slate-800'
@@ -32,7 +34,7 @@ export default function Card({ href, type, children }) {
 }
 
 // -----------------------------
-function CardImage({ src, alt, size = 80 }) {
+Card.Image = function ({ src, alt, size = 80 }) {
   if (!src) return null
 
   return (
@@ -49,12 +51,12 @@ function CardImage({ src, alt, size = 80 }) {
 }
 
 // -----------------------------
-function CardContent({ children }) {
+Card.Content = function ({ children }) {
   return <section>{children}</section>
 }
 
 // -----------------------------
-function CardHeader({ children }) {
+Card.Header = function ({ children }) {
   return (
     <header className='flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between'>
       {children}
@@ -63,7 +65,7 @@ function CardHeader({ children }) {
 }
 
 // -----------------------------
-function CardHeaderWrapper({ className, children }) {
+Card.HeaderWrapper = function ({ className, children }) {
   return (
     <div className={twMerge('w-80 truncate sm:w-64', className)}>
       {children}
@@ -72,7 +74,7 @@ function CardHeaderWrapper({ className, children }) {
 }
 
 // -----------------------------
-function CardTitle({ index, children }) {
+Card.Title = function ({ index, children }) {
   return (
     <h2 className='truncate text-lg font-semibold sm:text-xl'>
       <span className={twJoin(!index && 'hidden')}>{index}. </span>
@@ -82,7 +84,7 @@ function CardTitle({ index, children }) {
 }
 
 // -----------------------------
-function CardCreated({ children }) {
+Card.Created = function ({ children }) {
   return (
     <div className='flex-none text-sm font-medium text-slate-400'>
       {children}
@@ -91,7 +93,7 @@ function CardCreated({ children }) {
 }
 
 // -----------------------------
-function CardLink({ href, children }) {
+Card.Link = function ({ href, children }) {
   return (
     <h3>
       <Link
@@ -106,7 +108,7 @@ function CardLink({ href, children }) {
 }
 
 // -----------------------------
-function CardBio({ children }) {
+Card.Bio = function ({ children }) {
   return (
     <p className='mt-5 text-sm font-medium text-slate-500 dark:text-slate-300'>
       {children ?? 'This profile has no bio'}
@@ -115,7 +117,7 @@ function CardBio({ children }) {
 }
 
 // -----------------------------
-function CardDescription({ children }) {
+Card.Description = function ({ children }) {
   return (
     <p className='mt-5 text-sm font-medium text-slate-500 dark:text-slate-300'>
       {children ?? 'This repository has no description'}
@@ -124,7 +126,7 @@ function CardDescription({ children }) {
 }
 
 // -----------------------------
-function CardTopics({ children }) {
+Card.Topics = function ({ children }) {
   return (
     <p className='mt-5 text-sm font-medium italic text-slate-500 dark:text-slate-300'>
       {children}
@@ -133,18 +135,6 @@ function CardTopics({ children }) {
 }
 
 // =============================
-Card.Image = CardImage
-Card.Content = CardContent
-Card.Header = CardHeader
-Card.HeaderWrapper = CardHeaderWrapper
-Card.Title = CardTitle
-Card.Created = CardCreated
-Card.Link = CardLink
-Card.Bio = CardBio
-Card.Description = CardDescription
-Card.Topics = CardTopics
-
-// -----------------------------
 Card.Info = CardInfo
 Card.List = CardList
 Card.NotFound = CardNotFound
